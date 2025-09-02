@@ -1,6 +1,7 @@
+using CREMOT.GameplayUtilities;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : GenericSingleton<GameManager>
 {
     
 }
