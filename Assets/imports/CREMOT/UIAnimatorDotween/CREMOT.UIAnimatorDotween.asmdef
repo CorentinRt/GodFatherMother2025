@@ -1,0 +1,16 @@
+{
+    "name": "CREMOT.UIAnimatorDotween",
+    "rootNamespace": "CREMOT.UIAnimatorDotween",
+    "references": [
+        "GUID:18e08d5cfd0da224bbf1ff30062fe3bf"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
