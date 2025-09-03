@@ -35,11 +35,13 @@ namespace GFM2025
 
         private void Start()
         {
-            InitGame();
+            InitManagers();
+
+            InitGameState();
         }
 
         #region Init
-        private void InitGame()
+        private void InitManagers()
         {
             if (PlayerBehaviour.Exist)
             {
@@ -113,6 +115,10 @@ namespace GFM2025
                 default:
                     break;
             }
+
+            Debug.Log($"Switch to state {_currentGameState.ToString()}", this);
+
+            StartCurrentStateCoroutine();
 
             onGameStateChanged?.Invoke(_currentGameState);
             onGameStateChangedUnity?.Invoke();

@@ -28,6 +28,8 @@ namespace GFM2025
 
         public void Init()
         {
+            _currentScore = 0;
+
 
         }
 
