@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour
 {
@@ -27,10 +26,9 @@ public class EventManager : MonoBehaviour
             for (int j = 0; j < i+1; j++) {
                 pourcentage += DataBaseManager.Instance.GetEventData(j).pourcentage;
             }
-            print("pourcentage : " + pourcentage);
             if (number <= pourcentage) {
                 for (int j = 0; j < DataBaseManager.Instance.GetEventData(i).number; j++) {
-                    Instantiate(DataBaseManager.Instance.GetEventData(0).EventPrefab,new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)), new Quaternion(0,0,0,0));
+                    Instantiate(DataBaseManager.Instance.GetEventData(i).EventPrefab,new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)), new Quaternion(0,0,0,0));
                 }
                 print(DataBaseManager.Instance.GetEventData(i).label);
                 break;

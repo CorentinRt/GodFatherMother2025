@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ee7b256b7813a45a04849e328b31fa, type: 3}
   m_Name: EventDataBase
   m_EditorClassIdentifier: 
-  timer: 10
+  timer: 5
   events:
   - label: PlasticBall
     EventPrefab: {fileID: 7120910818878265562, guid: ae4c9f6e371d68a49831e3574892c5fe, type: 3}
     pourcentage: 25
     number: 5
-  - label: event 1
-    EventPrefab: {fileID: 0}
-    pourcentage: 0
-    number: 0
+  - label: DogToy
+    EventPrefab: {fileID: 720285049858528518, guid: 8ee21a6222d0eb644827425d490a511a, type: 3}
+    pourcentage: 25
+    number: 1
   - label: event 2
     EventPrefab: {fileID: 0}
     pourcentage: 0
