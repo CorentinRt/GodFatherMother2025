@@ -1,5 +1,6 @@
 using CREMOT.GameplayUtilities;
 using DG.Tweening;
+using NaughtyAttributes;
 using System.Collections;
 using UnityEngine;
 
@@ -22,9 +23,7 @@ namespace GFM2025
 
             _cameraLookAtTarget = PlayerBehaviour.Instance.CameraLookAtTarget;
 
-            transform.position = _cameraFollowTarget.position;
-
-            transform.rotation = _cameraFollowTarget.rotation;
+            InitCameraPositionRotation();
 
             StartCameraFollowCoroutine();
         }
@@ -64,6 +63,26 @@ namespace GFM2025
             }
 
             yield return null;
+        }
+
+        [Button]
+        private void InitCameraPositionRotation()
+        {
+            PlayerBehaviour player = null;
+            
+            if (PlayerBehaviour.Exist)
+            {
+                player = PlayerBehaviour.Instance;
+            }
+            else
+            {
+                player = FindFirstObjectByType<PlayerBehaviour>();
+            }
+            
+
+            transform.position = player.CameraFollowTarget.position;
+
+            transform.rotation = player.CameraFollowTarget.rotation;
         }
     }
 }
