@@ -1,5 +1,6 @@
 using CREMOT.GameplayUtilities;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GFM2025
 {
@@ -11,10 +12,18 @@ namespace GFM2025
         [Header("Movements")]
         [SerializeField] private Rigidbody _rb;
 
+        [Header("Camera")]
+        [SerializeField] private Transform _cameraFollowTarget;
+
+        [SerializeField] private Transform _cameraLookAtTarget;
+
         public PlayerDatas Data => _data;
 
+        public Transform CameraFollowTarget => _cameraFollowTarget;
 
-        public void InitPlayer()
+        public Transform CameraLookAtTarget => _cameraLookAtTarget;
+
+        public void Init()
         {
             
         }
@@ -38,6 +47,5 @@ namespace GFM2025
         {
 
         }
-
     }
 }
