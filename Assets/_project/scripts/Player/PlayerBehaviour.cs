@@ -80,7 +80,7 @@ namespace GFM2025
 
         private void FixedUpdate()
         {
-            if (CanUpdateMovements())
+            if (!CanUpdateMovements())
                 return;
 
             UpdateMovement(Time.fixedDeltaTime);

@@ -16,6 +16,16 @@ namespace GFM2025
             {
                 Debug.LogError("Error : No ScoreManager singleton found in scene ! Score won't work !", this);
             }
+
+            if (GameManager.Exist)
+            {
+                GameManager.Instance.PlayerEntersHomeZone();
+            }
+            else
+            {
+                Debug.LogError("Error : No GameManager singleton found in scene ! Game may not work properly !", this);
+            }
+
         }
 
         private void OnExitPlayer()

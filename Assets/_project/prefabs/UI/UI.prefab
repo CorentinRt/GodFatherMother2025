@@ -85,6 +85,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_WaterLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 8667287372424424622, guid: e57fc7c70f6afc44a83ae093d770ac85, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667287372424424622, guid: e57fc7c70f6afc44a83ae093d770ac85, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

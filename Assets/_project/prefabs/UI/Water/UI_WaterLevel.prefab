@@ -121,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4268955850190895410}
   - component: {fileID: 5345100788268217160}
+  - component: {fileID: 2783406273881500504}
   m_Layer: 0
   m_Name: Slider_Water
   m_TagString: Untagged
@@ -147,7 +148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: 0}
+  m_AnchoredPosition: {x: -75, y: 0}
   m_SizeDelta: {x: 150, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5345100788268217160
@@ -201,6 +202,36 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2783406273881500504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776196545799884554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5e3a468141e2f4dbbc514477ec9bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animations:
+  - _animationType: 3
+    _duration: 0.7
+    _ease: 6
+    _targetMove: {fileID: 2323284835070924362}
+    _targetScale: {x: 0, y: 0, z: 0}
+    _targetColor: {r: 0, g: 0, b: 0, a: 0}
+    _idleAmplitude: 0
+    _idleRandomOffsetDuration: 0
+    _bobbingScale: {x: 0, y: 0, z: 0}
+    _playOnStart: 1
+    _canPlayOnPause: 0
+    OnAnimationStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAnimationFinished:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &3745708507100836787
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +343,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5710074932956673516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8538544145723793512}
+  m_Layer: 0
+  m_Name: Slider_OutPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8538544145723793512
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5710074932956673516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8183307617277661615}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -75, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5756180660839679123
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +509,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4268955850190895410}
+  - {fileID: 2323284835070924362}
+  - {fileID: 8538544145723793512}
   m_Father: {fileID: 5290059184549115386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -571,3 +639,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliderWater: {fileID: 5345100788268217160}
+  _containerWaterSlide: {fileID: 5818297452959343410}
+--- !u!1 &7909008722423695315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2323284835070924362}
+  m_Layer: 0
+  m_Name: Slider_InPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2323284835070924362
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909008722423695315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8183307617277661615}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 75, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}

@@ -22,7 +22,7 @@ namespace GFM2025
         public int CurrentScore => _currentScore;
 
 
-        public event Action onScorePoints;
+        public event Action<int> onScorePoints;
 
         public UnityEvent onScorePointsUnity;
 
@@ -37,12 +37,10 @@ namespace GFM2025
         {
             if (GameManager.Exist && GameManager.Instance.CurrentGameState != GAME_STATE.SCORING)
                 return;
-
-            Debug.Log("Score Points", this);
             
             _currentScore += _data.AmountByScore;
 
-            onScorePoints?.Invoke();
+            onScorePoints?.Invoke(_currentScore);
             onScorePointsUnity?.Invoke();
         }
 
@@ -50,16 +48,12 @@ namespace GFM2025
         {
             _playerInside = true;
 
-            Debug.Log("Player Enter score zone", this);
-
             StartScoreCoroutine();
         }
 
         public void PlayerExitScoreZone()
         {
             _playerInside = false;
-
-            Debug.Log("Player Exit score zone", this);
 
             StopScoreCoroutine();
         }

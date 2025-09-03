@@ -196,7 +196,10 @@ namespace GFM2025
 
         public void WaterEmpty()
         {
+            if (_currentGameState == GAME_STATE.END_GAME)
+                return;
 
+            EndGame();
         }
 
         private void EndGame()

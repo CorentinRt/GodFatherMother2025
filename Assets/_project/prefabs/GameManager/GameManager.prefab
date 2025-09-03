@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c2e4fbad507524c9020c36b1499ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 8cd58dd3ad2c19248991b1d3cf1a57e4, type: 2}
+  onGameStateChangedUnity:
+    m_PersistentCalls:
+      m_Calls: []

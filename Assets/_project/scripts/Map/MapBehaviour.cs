@@ -40,7 +40,7 @@ namespace GFM2025
 
         private void UpdateWaterlevel(float deltaTime)
         {
-            if (_currentEmptiedTime <= _data.TimeToEmpty)
+            if (_currentEmptiedTime >= _data.TimeToEmpty)
             {
                 GameManager.Instance.WaterEmpty();
                 return;
