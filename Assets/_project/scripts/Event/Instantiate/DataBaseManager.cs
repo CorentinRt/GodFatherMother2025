@@ -5,8 +5,8 @@ public class DataBaseManager : MonoBehaviour
     private static DataBaseManager _instance;
     public static DataBaseManager Instance => _instance;
 
-    [SerializeField] private EventDataBase eventDatabase;
-    [SerializeField] private MystereDataBase mystereDatabase;
+    [SerializeField] private EventDataBase _eventDatabase;
+    [SerializeField] private MystereDataBase _mystereDatabase;
 
     private void Awake() {
         if (_instance == null)
@@ -19,18 +19,18 @@ public class DataBaseManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // Optional: Log confirmation
-        if (eventDatabase == null)
+        if (_eventDatabase == null)
             Debug.LogWarning("DataBaseManager : eventDatabase n'est pas assigné dans l'inspecteur !");
-        if (mystereDatabase == null)
+        if (_mystereDatabase == null)
             Debug.LogWarning("DataBaseManager : MystereDatabase n'est pas assigné dans l'inspecteur !");
     }
 
     public EventData GetEventData(int id) {
-        if (eventDatabase == null) {
+        if (_eventDatabase == null) {
             Debug.LogError("DataBaseManager: eventDatabase n'est pas assigné dans l'inspecteur !");
             return null;
         }
-        EventData data = eventDatabase.GetData(id);
+        EventData data = _eventDatabase.GetData(id);
         if (data == null) {
             Debug.LogError($"DataBaseManager: Aucun eventData trouvé pour l'id {id}.");
         }
@@ -38,18 +38,18 @@ public class DataBaseManager : MonoBehaviour
     }
 
     public int GetNumberEventData() {
-        if (eventDatabase == null) {
+        if (_eventDatabase == null) {
             Debug.LogError("DataBaseManager: eventDatabase n'est pas assigné dans l'inspecteur !");
             return 0;
         }
-        return eventDatabase.EventDataLenght();
+        return _eventDatabase.EventDataLenght();
     }
     public MystereData GetMystereData(int id) {
-        if (mystereDatabase == null) {
+        if (_mystereDatabase == null) {
             Debug.LogError("DataBaseManager: MystereDatabase n'est pas assigné dans l'inspecteur !");
             return null;
         }
-        MystereData data = mystereDatabase.GetData(id);
+        MystereData data = _mystereDatabase.GetData(id);
         if (data == null) {
             Debug.LogError($"DataBaseManager: Aucun MystereData trouvé pour l'id {id}.");
         }

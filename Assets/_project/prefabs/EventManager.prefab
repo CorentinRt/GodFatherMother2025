@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b156aa3cade5b40a8bd736cea484f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 30
+  eventDataBase: {fileID: 11400000, guid: 6ab08d1e45347f64e9bfaa4712d67b36, type: 2}

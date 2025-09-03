@@ -7,4 +7,6 @@ public class EventData
     public string label;
     public GameObject EventPrefab;
     public int pourcentage;
+    public int number;
+    public int lifeTime;
 }

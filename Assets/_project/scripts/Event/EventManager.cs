@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    [SerializeField] private EventDataBase eventDataBase;
-    private float time;
+    [SerializeField] private EventDataBase _eventDataBase;
+    private float _time;
 
     private void Update() {
-        time += Time.deltaTime;
-        if (time >= eventDataBase.timer) {
-            time = 0;
+        _time += Time.deltaTime;
+        if (_time >= _eventDataBase.timer) {
+            _time = 0;
             EventCallRandom();
         }
     }
@@ -26,9 +26,10 @@ public class EventManager : MonoBehaviour
             for (int j = 0; j < i+1; j++) {
                 pourcentage += DataBaseManager.Instance.GetEventData(j).pourcentage;
             }
-            print("pourcentage : " + pourcentage);
             if (number <= pourcentage) {
-                //GameObject a = Instantiate(DataBaseManager.Instance.GetEventData(i).EventPrefab);
+                for (int j = 0; j < DataBaseManager.Instance.GetEventData(i).number; j++) {
+                    Instantiate(DataBaseManager.Instance.GetEventData(i).EventPrefab,new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)), new Quaternion(0,0,0,0));
+                }
                 print(DataBaseManager.Instance.GetEventData(i).label);
                 break;
             }
