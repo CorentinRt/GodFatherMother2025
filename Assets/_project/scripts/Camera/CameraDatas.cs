@@ -4,7 +4,6 @@ using UnityEngine;
 namespace GFM2025
 {
     [CreateAssetMenu(fileName = "CameraData", menuName = "ScriptableObjects/CameraData", order = 1)]
-
     public class CameraDatas : ScriptableObject
     {
         [Header("parameters")]

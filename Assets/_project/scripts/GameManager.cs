@@ -31,6 +31,15 @@ namespace GFM2025
             {
                 Debug.LogError("Error : No CameraBehaviour singleton found in scene ! Init won't work properly !", this);
             }
+
+            if (ScoreManager.Exist)
+            {
+                ScoreManager.Instance.Init();
+            }
+            else
+            {
+                Debug.LogError("Error : No ScoreManager singleton found in scene ! Init won't work properly !", this);
+            }
         }
     }
 }
