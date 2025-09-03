@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5817e55951da1434a999e964b66680c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 60ee4257bfd2f034e9d53e9b4858d923, type: 2}
+  onScorePointsUnity:
+    m_PersistentCalls:
+      m_Calls: []

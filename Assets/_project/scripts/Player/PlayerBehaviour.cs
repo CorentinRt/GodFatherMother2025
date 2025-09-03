@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace GFM2025
 {
-    public class PlayerBehaviour : GenericSingleton<PlayerBehaviour>
+    public class PlayerBehaviour : GenericSingleton<PlayerBehaviour>, IPlayerBehaviour
     {
         [Header("Inputs")]
         [SerializeField] private InputActionReference _move;
@@ -100,6 +100,11 @@ namespace GFM2025
         private void Jump()
         {
             _rb.AddForce(Vector3.up * _data.JumpForce, ForceMode.Impulse);
+        }
+
+        public PlayerBehaviour GetPlayerBehaviour()
+        {
+            return this;
         }
     }
 }

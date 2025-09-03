@@ -37,7 +37,7 @@ namespace GFM2025
             if (other.gameObject == null)
                 return;
 
-            if (!other.gameObject.TryGetComponent<PlayerBehaviour>(out PlayerBehaviour player))
+            if (!other.gameObject.TryGetComponent<IPlayerBehaviour>(out IPlayerBehaviour player))
                 return;
 
             OnEnterPlayer();
@@ -48,7 +48,7 @@ namespace GFM2025
             if (other.gameObject == null)
                 return;
 
-            if (!other.gameObject.TryGetComponent<PlayerBehaviour>(out PlayerBehaviour player))
+            if (!other.gameObject.TryGetComponent<IPlayerBehaviour>(out IPlayerBehaviour player))
                 return;
 
             OnExitPlayer();
