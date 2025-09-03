@@ -1,0 +1,25 @@
+{
+    "name": "PROJECT_GFM2025",
+    "rootNamespace": "GFM2025",
+    "references": [
+        "GUID:072442f6af9998b468d1d35edb33bedf",
+        "GUID:2eabdb77fd059d1458be7d3e9dfc3e33",
+        "GUID:18e08d5cfd0da224bbf1ff30062fe3bf",
+        "GUID:776d03a35f1b52c4a9aed9f56d7b4229",
+        "GUID:f88fb04354076c646a4107a491394033",
+        "GUID:df1dea26b8503004d92d621e88aa9421",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:3ae5734e49d646442ad24f37762ebdd2",
+        "GUID:dc04f38471c3a459fb4d31124ee9127d",
+        "GUID:09dcc9c0126b6b34ab2a877b8f2277f5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
