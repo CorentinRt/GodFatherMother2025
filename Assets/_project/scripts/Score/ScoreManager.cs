@@ -33,6 +33,9 @@ namespace GFM2025
 
         private void ScorePoints()
         {
+            if (GameManager.Exist && GameManager.Instance.CurrentGameState != GAME_STATE.SCORING)
+                return;
+
             Debug.Log("Score Points", this);
             
             _currentScore += _data.AmountByScore;

@@ -80,9 +80,23 @@ namespace GFM2025
 
         private void FixedUpdate()
         {
+            if (CanUpdateMovements())
+                return;
+
             UpdateMovement(Time.fixedDeltaTime);
 
             UpdateMoveRotation(Time.fixedDeltaTime);
+        }
+
+        private bool CanUpdateMovements()
+        {
+            if (!GameManager.Exist)
+                return true;
+
+            if (GameManager.Instance.CurrentGameState == GAME_STATE.END_GAME || GameManager.Instance.CurrentGameState == GAME_STATE.PRE_GAME)
+                return false;
+
+            return true;
         }
 
         private void UpdateMovement(float deltaTime)
