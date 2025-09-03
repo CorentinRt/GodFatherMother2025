@@ -46,7 +46,7 @@ namespace GFM2025
 
             _jump.action.started += UpdateJumpInput;
 
-            _rb.maxAngularVelocity = _data.MovementsMaxSpeed;
+            _rb.maxLinearVelocity = _data.MovementsMaxSpeed;
             _rb.maxAngularVelocity = _data.RotationMaxSpeed;
         }
 
@@ -87,13 +87,13 @@ namespace GFM2025
 
         private void UpdateMovement(float deltaTime)
         {
-            _rb.linearVelocity += transform.forward * _moveValue * deltaTime;
+            _rb.linearVelocity += transform.forward * _moveValue * _data.MovementsAcceleration * deltaTime;
 
         }
 
         private void UpdateMoveRotation(float deltaTime)
         {
-            _rb.angularVelocity += Vector3.up * _rotateValue * deltaTime;
+            _rb.angularVelocity += Vector3.up * _rotateValue * _data.RotationSpeed * deltaTime;
 
         }
 
