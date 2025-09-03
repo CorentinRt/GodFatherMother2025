@@ -344,6 +344,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataBaseManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6800614114334392230, guid: d02c1f43b9b7efe409748eb1dd2a2c56, type: 3}
+      propertyPath: _eventDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ab08d1e45347f64e9bfaa4712d67b36, type: 2}
+    - target: {fileID: 6800614114334392230, guid: d02c1f43b9b7efe409748eb1dd2a2c56, type: 3}
+      propertyPath: _mystereDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 8cbe7669775c28742badcf3f2eeb8126, type: 2}
     - target: {fileID: 9195778466696645355, guid: d02c1f43b9b7efe409748eb1dd2a2c56, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -442,9 +450,9 @@ PrefabInstance:
       value: EventManager
       objectReference: {fileID: 0}
     - target: {fileID: 5455915832425482037, guid: 4eefa3465ac1d8a43bfb51e6fd10673d, type: 3}
-      propertyPath: timer
-      value: 5
-      objectReference: {fileID: 0}
+      propertyPath: _eventDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ab08d1e45347f64e9bfaa4712d67b36, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
