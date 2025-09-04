@@ -54,6 +54,8 @@ namespace GFM2025
         private bool _hasJumped;
         private float _currentJumpCooldown;
 
+        private bool _forceBlock;
+
         private Tween _rotateTween;
 
         public PlayerDatas Data => _data;
@@ -63,8 +65,6 @@ namespace GFM2025
         public Transform CameraLookAtTarget => _cameraLookAtTarget;
 
         public Transform EventPosition => _eventPosition;
-
-
 
         public event Action onPressPause;
 
@@ -205,6 +205,9 @@ namespace GFM2025
             if (GameManager.Instance.CurrentGameState == GAME_STATE.END_GAME || GameManager.Instance.CurrentGameState == GAME_STATE.PRE_GAME)
                 return false;
 
+            if (_forceBlock)
+                return false;
+
             return true;
         }
 
@@ -282,5 +285,16 @@ namespace GFM2025
             _rb.AddForce(_rotationAnchor.forward * -1 * _data.BounceForce, ForceMode.Impulse);
         }
         
+        public void StartForceBlockPlayer()
+        {
+            _forceBlock = true;
+
+            _rb.linearVelocity = Vector3.zero;
+        }
+
+        public void StopForceBlockPlayer()
+        {
+            _forceBlock = false;
+        }
     }
 }
