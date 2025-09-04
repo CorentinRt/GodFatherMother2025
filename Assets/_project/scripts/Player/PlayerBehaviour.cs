@@ -18,6 +18,8 @@ namespace GFM2025
         [SerializeField] private InputActionReference _qteThree;
         [SerializeField] private InputActionReference _qteFour;
 
+        [SerializeField] private InputActionReference _pause;
+
         [Header("Datas")]
         [SerializeField] private PlayerDatas _data;
 
