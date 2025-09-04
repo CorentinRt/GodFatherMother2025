@@ -66,6 +66,8 @@ namespace GFM2025
             _qteThree.action.started += UpdateQTEInputThree;
             _qteFour.action.started += UpdateQTEInputFour;
 
+            _pause.action.started += UpdatePauseInput;
+
             _rb.maxLinearVelocity = _data.MovementsMaxSpeed;
             _rb.maxAngularVelocity = _data.RotationMaxSpeed;
         }
@@ -86,6 +88,8 @@ namespace GFM2025
             _qteTwo.action.started -= UpdateQTEInputTwo;
             _qteThree.action.started -= UpdateQTEInputThree;
             _qteFour.action.started -= UpdateQTEInputFour;
+
+            _pause.action.started -= UpdatePauseInput;
         }
 
         private void UpdateMoveInput(InputAction.CallbackContext ctx)
@@ -101,6 +105,11 @@ namespace GFM2025
         private void UpdateJumpInput(InputAction.CallbackContext ctx)
         {
             Jump();
+        }
+
+        private void UpdatePauseInput(InputAction.CallbackContext ctx)
+        {
+            onPressPause?.Invoke();
         }
 
         private void UpdateQTEInputOne(InputAction.CallbackContext ctx)

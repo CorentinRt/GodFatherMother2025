@@ -883,7 +883,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1895679035949913192}
         m_TargetAssemblyTypeName: GFM2025.UI_PauseMenu, PROJECT_GFM2025
-        m_MethodName: OnPressResumeGame
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

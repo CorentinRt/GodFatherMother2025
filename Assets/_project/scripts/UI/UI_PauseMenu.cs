@@ -15,15 +15,15 @@ namespace GFM2025
         {
             HideUI();
 
-            PlayerBehaviour.Instance.onPressPause += DisplayUI;
+            PlayerBehaviour.Instance.onPressPause += ToggleUI;
         }
 
         private void OnDestroy()
         {
-            PlayerBehaviour.Instance.onPressPause -= DisplayUI;
+            PlayerBehaviour.Instance.onPressPause -= ToggleUI;
         }
 
-        private void ToggleUI()
+        public void ToggleUI()
         {
             if (_pauseContainer.activeSelf)
             {
