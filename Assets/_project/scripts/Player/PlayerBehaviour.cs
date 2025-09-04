@@ -48,6 +48,8 @@ namespace GFM2025
         [Header("Event position")]
         [SerializeField] private Transform _eventPosition;
 
+        [SerializeField] private LayerMask _siphonLayerMask;
+
         private float _moveVerticalValue;
         private float _moveHorizontalValue;
         private float _rotateValue;
@@ -60,6 +62,8 @@ namespace GFM2025
         private Tween _rotateTween;
 
         private Coroutine _delayRotatePlayer;
+
+        private Collider[] _bufferSiphonCollider;
 
         public PlayerDatas Data => _data;
 
@@ -76,6 +80,7 @@ namespace GFM2025
         public event Action onPressQTEThree;
         public event Action onPressQTEFour;
 
+        #region Init / Destroy
         public void Init()
         {
             _move.action.started += UpdateMoveInput;
@@ -122,7 +127,9 @@ namespace GFM2025
 
             GameManager.Instance.onGameStateChanged -= ReceiveChangeGameState;
         }
+        #endregion
 
+        #region Inputs
         private void UpdateMoveInput(InputAction.CallbackContext ctx)
         {
             _moveVerticalValue = ctx.ReadValue<float>();
@@ -162,6 +169,7 @@ namespace GFM2025
         {
             onPressQTEFour?.Invoke();
         }
+        #endregion
 
         private void FixedUpdate()
         {
@@ -185,6 +193,7 @@ namespace GFM2025
             //UpdateMoveRotation(Time.fixedDeltaTime);
         }
 
+        #region Move
         private bool IsGrounded()
         {
             RaycastHit hit;
@@ -260,12 +269,16 @@ namespace GFM2025
 
             _rb.AddForce(Vector3.up * _data.JumpForce, ForceMode.Impulse);
         }
+        #endregion
 
+        #region IPlayerBehaviour
         public PlayerBehaviour GetPlayerBehaviour()
         {
             return this;
         }
+        #endregion
 
+        #region RotatePlayer
         private void ReceiveChangeGameState(GAME_STATE gameState)
         {
             if (_rotateTween != null)
@@ -305,12 +318,16 @@ namespace GFM2025
 
             _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, rotationY, 0f), _data.TimeToRotate);
         }
+        #endregion
 
+        #region Bounce
         public void BouncePlayerBack()
         {
             _rb.AddForce(_rotationAnchor.forward * -1 * _data.BounceForce, ForceMode.Impulse);
         }
-        
+        #endregion
+
+        #region Force Block
         public void StartForceBlockPlayer()
         {
             _forceBlock = true;
@@ -322,5 +339,38 @@ namespace GFM2025
         {
             _forceBlock = false;
         }
+        #endregion
+
+        #region Detect Siphon
+
+        private Siphon GetClosestSiphon()
+        {
+            if (Physics.OverlapSphereNonAlloc(transform.position, 25f, _bufferSiphonCollider, _siphonLayerMask) <= 0)
+                return null;
+
+            float minDist = 1000000f;
+
+            Siphon minDistSiphon = null;
+
+            foreach (Collider collider in _bufferSiphonCollider)
+            {
+                if (collider == null)
+                    continue;
+
+                if (!collider.gameObject.TryGetComponent<Siphon>(out Siphon siphon))
+                    return null;
+
+                if (siphon.GetDistanceFromPlayer() < minDist)
+                {
+                    minDist = siphon.GetDistanceFromPlayer();
+                    minDistSiphon = siphon;
+                }
+            }
+
+            return minDistSiphon;
+        }
+
+        #endregion
+
     }
 }

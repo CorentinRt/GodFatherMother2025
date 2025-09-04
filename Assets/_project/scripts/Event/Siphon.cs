@@ -4,20 +4,10 @@ namespace GFM2025
 {
     public class Siphon : EventParent
     {
-        private void OnTriggerEnter(Collider other)
+        public float GetDistanceFromPlayer()
         {
-            if (other == null || other.gameObject == null)
-                return;
-
-            if (!other.gameObject.TryGetComponent<IPlayerBehaviour>(out IPlayerBehaviour player))
-                return;
-
-            
+            return (PlayerBehaviour.Instance.transform.position - transform.position).magnitude;
         }
 
-        private void OnDestroy()
-        {
-            
-        }
     }
 }
