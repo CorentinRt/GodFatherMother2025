@@ -18,3 +18,4 @@ MonoBehaviour:
   _rotationSpeed: 2
   _timeToRotate: 2
   _jumpForce: 5
+  _bounceForce: 7
