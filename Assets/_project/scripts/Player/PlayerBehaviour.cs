@@ -13,6 +13,11 @@ namespace GFM2025
         [SerializeField] private InputActionReference _rotate;
         [SerializeField] private InputActionReference _jump;
 
+        [SerializeField] private InputActionReference _qteOne;
+        [SerializeField] private InputActionReference _qteTwo;
+        [SerializeField] private InputActionReference _qteThree;
+        [SerializeField] private InputActionReference _qteFour;
+
         [Header("Datas")]
         [SerializeField] private PlayerDatas _data;
 
@@ -34,6 +39,14 @@ namespace GFM2025
 
         public Transform CameraLookAtTarget => _cameraLookAtTarget;
 
+
+        public event Action onPressPause;
+
+        public event Action onPressQTEOne;
+        public event Action onPressQTETwo;
+        public event Action onPressQTEThree;
+        public event Action onPressQTEFour;
+
         public void Init()
         {
             _move.action.started += UpdateMoveInput;
@@ -45,6 +58,11 @@ namespace GFM2025
             _rotate.action.canceled += UpdateRotateInput;
 
             _jump.action.started += UpdateJumpInput;
+
+            _qteOne.action.started += UpdateQTEInputOne;
+            _qteTwo.action.started += UpdateQTEInputTwo;
+            _qteThree.action.started += UpdateQTEInputThree;
+            _qteFour.action.started += UpdateQTEInputFour;
 
             _rb.maxLinearVelocity = _data.MovementsMaxSpeed;
             _rb.maxAngularVelocity = _data.RotationMaxSpeed;
@@ -61,6 +79,11 @@ namespace GFM2025
             _rotate.action.canceled -= UpdateRotateInput;
 
             _jump.action.started -= UpdateJumpInput;
+
+            _qteOne.action.started -= UpdateQTEInputOne;
+            _qteTwo.action.started -= UpdateQTEInputTwo;
+            _qteThree.action.started -= UpdateQTEInputThree;
+            _qteFour.action.started -= UpdateQTEInputFour;
         }
 
         private void UpdateMoveInput(InputAction.CallbackContext ctx)
@@ -76,6 +99,23 @@ namespace GFM2025
         private void UpdateJumpInput(InputAction.CallbackContext ctx)
         {
             Jump();
+        }
+
+        private void UpdateQTEInputOne(InputAction.CallbackContext ctx)
+        {
+            onPressQTEOne?.Invoke();
+        }
+        private void UpdateQTEInputTwo(InputAction.CallbackContext ctx)
+        {
+            onPressQTETwo?.Invoke();
+        }
+        private void UpdateQTEInputThree(InputAction.CallbackContext ctx)
+        {
+            onPressQTEThree?.Invoke();
+        }
+        private void UpdateQTEInputFour(InputAction.CallbackContext ctx)
+        {
+            onPressQTEFour?.Invoke();
         }
 
         private void FixedUpdate()
