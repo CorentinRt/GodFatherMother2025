@@ -25,6 +25,7 @@ namespace GFM2025
 
         [Header("Movements")]
         [SerializeField] private Rigidbody _rb;
+        [SerializeField] private bool _useHorizontalMovement = true;
 
         [Header("Camera")]
         [SerializeField] private Transform _cameraFollowTarget;
@@ -32,7 +33,8 @@ namespace GFM2025
         [SerializeField] private Transform _cameraLookAtTarget;
 
 
-        private float _moveValue;
+        private float _moveVerticalValue;
+        private float _moveHorizontalValue;
         private float _rotateValue;
 
         public PlayerDatas Data => _data;
@@ -94,12 +96,13 @@ namespace GFM2025
 
         private void UpdateMoveInput(InputAction.CallbackContext ctx)
         {
-            _moveValue = ctx.ReadValue<float>();
+            _moveVerticalValue = ctx.ReadValue<float>();
         }
 
         private void UpdateRotateInput(InputAction.CallbackContext ctx)
         {
             _rotateValue = ctx.ReadValue<float>();
+            _moveHorizontalValue = ctx.ReadValue<float>();
         }
 
         private void UpdateJumpInput(InputAction.CallbackContext ctx)
@@ -136,7 +139,7 @@ namespace GFM2025
 
             UpdateMovement(Time.fixedDeltaTime);
 
-            UpdateMoveRotation(Time.fixedDeltaTime);
+            //UpdateMoveRotation(Time.fixedDeltaTime);
         }
 
         private bool CanUpdateMovements()
@@ -152,7 +155,16 @@ namespace GFM2025
 
         private void UpdateMovement(float deltaTime)
         {
-            _rb.linearVelocity += transform.forward * _moveValue * _data.MovementsAcceleration * deltaTime;
+            Vector3 dir = transform.forward * _moveVerticalValue;
+
+            if (_useHorizontalMovement)
+            {
+                dir += transform.right * _moveHorizontalValue;
+            }
+
+            dir.Normalize();
+
+            _rb.linearVelocity += dir * _data.MovementsAcceleration * deltaTime;
 
         }
 

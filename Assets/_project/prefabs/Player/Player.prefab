@@ -396,5 +396,6 @@ MonoBehaviour:
   _pause: {fileID: 5971090455406432018, guid: 68aef4303a7e57a45b6b49da4cf43847, type: 3}
   _data: {fileID: 11400000, guid: a3332e7d7b3941448a6a47b3027c9fb6, type: 2}
   _rb: {fileID: 638358341218651784}
+  _useHorizontalMovement: 1
   _cameraFollowTarget: {fileID: 6545810202585701753}
   _cameraLookAtTarget: {fileID: 8307994310148662124}
