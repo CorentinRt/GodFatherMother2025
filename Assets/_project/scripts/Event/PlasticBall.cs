@@ -1,31 +1,22 @@
 using UnityEngine;
 
-public class PlasticBall : MonoBehaviour
+namespace GFM2025
 {
-    private Rigidbody _rgbd;
+    public class PlasticBall : EventParent {
+        private Rigidbody _rgbd;
 
-    [SerializeField] private float _lifeTime;
-    private float _time = 0;
-
-    private void OnEnable() {
-        TryGetComponent(out _rgbd);
-    }
-
-    private void Start()
-    {
-        _rgbd.linearVelocity = new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f));
-    }
-
-    void Update() {
-        _time += Time.deltaTime;
-        if (_time >= _lifeTime) {
-            Destroy(gameObject);
+        private void OnEnable() {
+            TryGetComponent(out _rgbd);
         }
-    }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.transform.tag == "PlasticBall") {
-            _rgbd.linearVelocity = -_rgbd.linearVelocity;
+        private void Start() {
+            _rgbd.linearVelocity = new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f));
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            if (other.transform.tag == "PlasticBall") {
+                _rgbd.linearVelocity = -_rgbd.linearVelocity;
+            }
         }
     }
 }

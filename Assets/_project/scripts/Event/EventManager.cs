@@ -1,3 +1,4 @@
+using GFM2025;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
@@ -27,10 +28,12 @@ public class EventManager : MonoBehaviour
                 pourcentage += DataBaseManager.Instance.GetEventData(j).pourcentage;
             }
             if (number <= pourcentage) {
-                for (int j = 0; j < DataBaseManager.Instance.GetEventData(i).number; j++) {
-                    Instantiate(DataBaseManager.Instance.GetEventData(i).EventPrefab,new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)), new Quaternion(0,0,0,0));
+                EventData item = DataBaseManager.Instance.GetEventData(i);
+                for (int j = 0; j < item.number; j++) {
+                    GameObject a = Instantiate(item.EventPrefab,new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)), new Quaternion(0,0,0,0));
+                    a.GetComponent<EventParent>().lifeTime = item.lifeTime;
                 }
-                print(DataBaseManager.Instance.GetEventData(i).label);
+                print(item.label);
                 break;
             }
         }

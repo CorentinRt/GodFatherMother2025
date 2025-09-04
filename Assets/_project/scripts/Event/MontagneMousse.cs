@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GFM2025
 {
-    public class MontagneMousse : MonoBehaviour
+    public class MontagneMousse : EventParent
     {
         private void OnTriggerEnter(Collider other)
         {
