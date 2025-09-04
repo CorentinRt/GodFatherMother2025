@@ -36,7 +36,7 @@ MonoBehaviour:
     lifeTime: 0
   - label: montagne de mousse
     EventPrefab: {fileID: 3964659222429195938, guid: bec881b11bbd8874083ed3864c2daf8e, type: 3}
-    pourcentage: 348
+    pourcentage: 0
     number: 1
     lifeTime: 171
   - label: siphon
