@@ -42,6 +42,10 @@ namespace GFM2025
 
         [SerializeField] private Transform _cameraLookAtTarget;
 
+        [Space]
+
+        [Header("Event position")]
+        [SerializeField] private Transform _eventPosition;
 
         private float _moveVerticalValue;
         private float _moveHorizontalValue;
@@ -57,6 +61,9 @@ namespace GFM2025
         public Transform CameraFollowTarget => _cameraFollowTarget;
 
         public Transform CameraLookAtTarget => _cameraLookAtTarget;
+
+        public Transform EventPosition => _eventPosition;
+
 
 
         public event Action onPressPause;
