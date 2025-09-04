@@ -124,6 +124,7 @@ namespace GFM2025
                     Debug.LogError($"UI_QTE: Aucun input trouvé dans la qteData");
                     return false;
                 }
+                
                 UpdateTextStartQTE();
                 OpenUi();
                 return true;

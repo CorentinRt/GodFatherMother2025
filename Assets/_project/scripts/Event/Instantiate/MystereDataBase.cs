@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GFM2025;
 using UnityEngine;
 
 
@@ -9,7 +10,7 @@ public class MystereDataBase : ScriptableObject
 
     public MystereData GetData(int id) {
         if (id < 0 || id >= datas.Count)
-            id = Random.Range(0, datas.Count);
+            id = UnityEngine.Random.Range(0, datas.Count);
         else
             id = Mathf.Clamp(id, 0, datas.Count - 1);
         return datas[id];
