@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6410056222930667592}
   m_Layer: 0
-  m_Name: UI QTE
+  m_Name: UI_QTE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

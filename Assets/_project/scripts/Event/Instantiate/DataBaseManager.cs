@@ -7,6 +7,7 @@ public class DataBaseManager : MonoBehaviour
 
     [SerializeField] private EventDataBase _eventDatabase;
     [SerializeField] private MystereDataBase _mystereDatabase;
+    [SerializeField] private QTEDataBase _qteDatabase;
 
     private void Awake() {
         if (_instance == null)
@@ -23,6 +24,8 @@ public class DataBaseManager : MonoBehaviour
             Debug.LogWarning("DataBaseManager : eventDatabase n'est pas assigné dans l'inspecteur !");
         if (_mystereDatabase == null)
             Debug.LogWarning("DataBaseManager : MystereDatabase n'est pas assigné dans l'inspecteur !");
+        if (_qteDatabase == null)
+            Debug.LogWarning("DataBaseManager : QTEDatabase n'est pas assigné dans l'inspecteur !");
     }
 
     public EventData GetEventData(int id) {
@@ -54,5 +57,30 @@ public class DataBaseManager : MonoBehaviour
             Debug.LogError($"DataBaseManager: Aucun MystereData trouvé pour l'id {id}.");
         }
         return data;
+    }
+
+    public QTEData.TOUCHE[] GetGTEData(int id)
+    {
+        if (_qteDatabase == null)
+        {
+            Debug.LogError("DataBaseManager: qteDatabase n'est pas assigné dans l'inspecteur !");
+            return null;
+        }
+        QTEData.TOUCHE[] data = _qteDatabase.GetData(id);
+        if (data == null)
+        {
+            Debug.LogError($"DataBaseManager: Aucun qteData trouvé pour l'id {id}.");
+        }
+        return data;
+    }
+
+    public int GetQTEEventData()
+    {
+        if (_eventDatabase == null)
+        {
+            Debug.LogError("DataBaseManager: qteDatabase n'est pas assigné dans l'inspecteur !");
+            return 0;
+        }
+        return _qteDatabase.QTEDataLenght();
     }
 }

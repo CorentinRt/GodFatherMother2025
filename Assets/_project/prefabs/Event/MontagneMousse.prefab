@@ -121,4 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83312e727b3eca42a3f3f1163acc2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 0
+  lifeTime: 0
+  CanvaQTE: {fileID: 2647645564658413764, guid: 266d2040162f71045b11382c73c4c0d5, type: 3}
