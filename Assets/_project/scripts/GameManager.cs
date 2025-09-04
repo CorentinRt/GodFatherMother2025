@@ -106,6 +106,12 @@ namespace GFM2025
 
                 case GAME_STATE.SCORING:
                     _currentGameState = GAME_STATE.SCORING;
+
+                    if (_tourCount != 0)
+                    {
+                        ScoreManager.Instance.ScoreReturnHomePoints();
+                    }
+
                     IncrementTourCount();
                     break;
 
