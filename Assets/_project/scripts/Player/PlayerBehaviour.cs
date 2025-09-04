@@ -13,11 +13,19 @@ namespace GFM2025
         [SerializeField] private InputActionReference _rotate;
         [SerializeField] private InputActionReference _jump;
 
+        [SerializeField] private InputActionReference _qteOne;
+        [SerializeField] private InputActionReference _qteTwo;
+        [SerializeField] private InputActionReference _qteThree;
+        [SerializeField] private InputActionReference _qteFour;
+
+        [SerializeField] private InputActionReference _pause;
+
         [Header("Datas")]
         [SerializeField] private PlayerDatas _data;
 
         [Header("Movements")]
         [SerializeField] private Rigidbody _rb;
+        [SerializeField] private bool _useHorizontalMovement = true;
 
         [Header("Camera")]
         [SerializeField] private Transform _cameraFollowTarget;
@@ -25,7 +33,8 @@ namespace GFM2025
         [SerializeField] private Transform _cameraLookAtTarget;
 
 
-        private float _moveValue;
+        private float _moveVerticalValue;
+        private float _moveHorizontalValue;
         private float _rotateValue;
 
         public PlayerDatas Data => _data;
@@ -33,6 +42,14 @@ namespace GFM2025
         public Transform CameraFollowTarget => _cameraFollowTarget;
 
         public Transform CameraLookAtTarget => _cameraLookAtTarget;
+
+
+        public event Action onPressPause;
+
+        public event Action onPressQTEOne;
+        public event Action onPressQTETwo;
+        public event Action onPressQTEThree;
+        public event Action onPressQTEFour;
 
         public void Init()
         {
@@ -45,6 +62,13 @@ namespace GFM2025
             _rotate.action.canceled += UpdateRotateInput;
 
             _jump.action.started += UpdateJumpInput;
+
+            _qteOne.action.started += UpdateQTEInputOne;
+            _qteTwo.action.started += UpdateQTEInputTwo;
+            _qteThree.action.started += UpdateQTEInputThree;
+            _qteFour.action.started += UpdateQTEInputFour;
+
+            _pause.action.started += UpdatePauseInput;
 
             _rb.maxLinearVelocity = _data.MovementsMaxSpeed;
             _rb.maxAngularVelocity = _data.RotationMaxSpeed;
@@ -61,21 +85,51 @@ namespace GFM2025
             _rotate.action.canceled -= UpdateRotateInput;
 
             _jump.action.started -= UpdateJumpInput;
+
+            _qteOne.action.started -= UpdateQTEInputOne;
+            _qteTwo.action.started -= UpdateQTEInputTwo;
+            _qteThree.action.started -= UpdateQTEInputThree;
+            _qteFour.action.started -= UpdateQTEInputFour;
+
+            _pause.action.started -= UpdatePauseInput;
         }
 
         private void UpdateMoveInput(InputAction.CallbackContext ctx)
         {
-            _moveValue = ctx.ReadValue<float>();
+            _moveVerticalValue = ctx.ReadValue<float>();
         }
 
         private void UpdateRotateInput(InputAction.CallbackContext ctx)
         {
             _rotateValue = ctx.ReadValue<float>();
+            _moveHorizontalValue = ctx.ReadValue<float>();
         }
 
         private void UpdateJumpInput(InputAction.CallbackContext ctx)
         {
             Jump();
+        }
+
+        private void UpdatePauseInput(InputAction.CallbackContext ctx)
+        {
+            onPressPause?.Invoke();
+        }
+
+        private void UpdateQTEInputOne(InputAction.CallbackContext ctx)
+        {
+            onPressQTEOne?.Invoke();
+        }
+        private void UpdateQTEInputTwo(InputAction.CallbackContext ctx)
+        {
+            onPressQTETwo?.Invoke();
+        }
+        private void UpdateQTEInputThree(InputAction.CallbackContext ctx)
+        {
+            onPressQTEThree?.Invoke();
+        }
+        private void UpdateQTEInputFour(InputAction.CallbackContext ctx)
+        {
+            onPressQTEFour?.Invoke();
         }
 
         private void FixedUpdate()
@@ -85,7 +139,7 @@ namespace GFM2025
 
             UpdateMovement(Time.fixedDeltaTime);
 
-            UpdateMoveRotation(Time.fixedDeltaTime);
+            //UpdateMoveRotation(Time.fixedDeltaTime);
         }
 
         private bool CanUpdateMovements()
@@ -101,7 +155,16 @@ namespace GFM2025
 
         private void UpdateMovement(float deltaTime)
         {
-            _rb.linearVelocity += transform.forward * _moveValue * _data.MovementsAcceleration * deltaTime;
+            Vector3 dir = transform.forward * _moveVerticalValue;
+
+            if (_useHorizontalMovement)
+            {
+                dir += transform.right * _moveHorizontalValue;
+            }
+
+            dir.Normalize();
+
+            _rb.linearVelocity += dir * _data.MovementsAcceleration * deltaTime;
 
         }
 

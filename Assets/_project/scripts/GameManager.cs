@@ -1,8 +1,10 @@
 using CREMOT.GameplayUtilities;
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace GFM2025
 {
@@ -19,6 +21,7 @@ namespace GFM2025
     {
         [Header("Datas")]
         [SerializeField] private MainGameData _data;
+        [SerializeField] private LevelData _levelData;
 
         private GAME_STATE _currentGameState;
 
@@ -209,5 +212,23 @@ namespace GFM2025
 
             SwitchGameState(GAME_STATE.END_GAME);
         }
+
+        #region Scene
+        public void OpenGameScene()
+        {
+            SceneManager.LoadScene(_levelData.GameName);
+        }
+
+        public void OpenMenuScene()
+        {
+            SceneManager.LoadScene(_levelData.MenuName);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+
+        #endregion
     }
 }
