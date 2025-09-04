@@ -5,8 +5,6 @@ namespace GFM2025
 {
     public class MontagneMousse : EventParent
     {
-        [SerializeField] private GameObject CanvaQTE;
-
         private QTEData.TOUCHE[] _inputListQTE;
         private int _index = 0;
         private bool istarted;
@@ -89,12 +87,12 @@ namespace GFM2025
 
         void StartQTE() {
             istarted = true;
-            CanvaQTE.SetActive(true);
+            UI_QTE.Instance.OpenUi();
         }
 
         void EndQTE() {
             istarted = false;
-            CanvaQTE.SetActive(false);
+            UI_QTE.Instance.CloseUi();
         }
     }
  }
