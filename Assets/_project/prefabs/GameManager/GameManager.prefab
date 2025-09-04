@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 8cd58dd3ad2c19248991b1d3cf1a57e4, type: 2}
+  _levelData: {fileID: 11400000, guid: 88974a5e18d7f564bb773d593e25aeaf, type: 2}
   onGameStateChangedUnity:
     m_PersistentCalls:
       m_Calls: []
