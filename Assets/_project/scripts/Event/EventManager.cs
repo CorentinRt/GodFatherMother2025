@@ -6,33 +6,27 @@ public class EventManager : MonoBehaviour
 {
     [SerializeField] private EventDataBase _eventDataBase;
     private float _time;
-    private int tour;
 
     [SerializeField] private float _heightOffset = 1f;
 
-    private void Start()
-    {
-        tour = 0;
-    }
 
     private void Update()
     {
         _time += Time.deltaTime;
 
-        if (_time >= _eventDataBase.timer- _eventDataBase.timer*_eventDataBase.scaleTimer*tour)
+        if (_time >= _eventDataBase.timer - _eventDataBase.timer * _eventDataBase.scaleTimer * GameManager.Instance.TourCount)
         {
             _time = 0;
             EventCallRandom();
         }
     }
 
-
     private void EventCallRandom()
     {
         for (int i = 0; i < DataBaseManager.Instance.GetNumberEventData(); i++)
         {
             EventData item = DataBaseManager.Instance.GetEventData(i);
-            if (Random.Range(0, 100) < item.pourcentage + item.scalePourcentage * item.pourcentage * tour)
+            if (Random.Range(0, 100) < item.pourcentage + item.scalePourcentage * item.pourcentage * GameManager.Instance.TourCount)
             {
                 for (int j = 0; j < item.number; j++)
                 {
@@ -53,11 +47,5 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    [Button]
-    public void incremantDebugTour()
-    {
-        tour++;
     }
 }
