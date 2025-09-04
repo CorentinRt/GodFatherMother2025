@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6584399009612078076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Water_EmptyLevelPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7553522562675189575}
   - component: {fileID: 5319515660820534367}
   - component: {fileID: 526077436817063365}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d67108c436f44b84f83f739fe9ace330, type: 2}
+  - {fileID: 2100000, guid: f07feac51eb188d4dad176b756bc819a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4756063373872368644}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WaterLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
