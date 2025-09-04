@@ -19,3 +19,9 @@ MonoBehaviour:
   _timeToRotate: 2
   _jumpForce: 5
   _bounceForce: 7
+  _speedBoostDuration: 5
+  _speedMalusDuration: 5
+  _shieldDuration: 5
+  _speedBoostMultiplier: 2
+  _speedMalusMultiplier: 0.5
+  _externalSiphonForceMultiplier: 0.03

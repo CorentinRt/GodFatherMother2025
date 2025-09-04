@@ -306,7 +306,9 @@ namespace GFM2025
                 externalForce += MapBehaviour.Instance.Data.BaseForceOnPlayer * _rotationAnchor.forward;
             }
 
-            _rb.linearVelocity += externalForce * deltaTime;
+            Vector3 siphonExternalForce = GetSiphonExternalForce();
+
+            _rb.linearVelocity += siphonExternalForce + externalForce * deltaTime;
 
         }
 
@@ -400,14 +402,29 @@ namespace GFM2025
         #endregion
 
         #region Siphon
-        private void HandleClosestSiphon()
+        private Vector3 GetSiphonExternalForce()
         {
+            Siphon siphon = GetClosestSiphon();
 
+            if (siphon == null)
+                return Vector3.zero;
+
+            Debug.Log("Get closest siphon", siphon.gameObject);
+
+            Vector3 force = siphon.transform.position - transform.position;
+
+            force.y = 0f;
+
+            force *= _data.ExternalSiphonForceMultiplier / force.magnitude;
+
+            return force;
         }
 
         private Siphon GetClosestSiphon()
         {
-            if (Physics.OverlapSphereNonAlloc(transform.position, 25f, _bufferSiphonCollider, _siphonLayerMask) <= 0)
+            _bufferSiphonCollider = Physics.OverlapSphere(transform.position, 25f, _siphonLayerMask);
+
+            if (_bufferSiphonCollider == null || _bufferSiphonCollider.Length <= 0)
                 return null;
 
             float minDist = 1000000f;

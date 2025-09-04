@@ -475,7 +475,7 @@ MonoBehaviour:
   _eventPosition: {fileID: 2287007616641416592}
   _siphonLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!1001 &787197517433321484
 PrefabInstance:
   m_ObjectHideFlags: 0

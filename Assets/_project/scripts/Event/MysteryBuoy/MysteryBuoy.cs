@@ -46,7 +46,7 @@ namespace GFM2025
                 _rotateInfiniteTween = null;
             }
 
-            _rotateInfiniteTween = _visuals.DORotate(new Vector3(0f, 360f, 0f), 3f, RotateMode.FastBeyond360).OnComplete(() => PlayRotateInfinite());
+            _rotateInfiniteTween = _visuals.DORotate(new Vector3(0f, 360f, 0f), 3f, RotateMode.FastBeyond360).SetEase(Ease.Linear).OnComplete(() => PlayRotateInfinite());
         }
 
         private void OnTriggerEnter(Collider other)

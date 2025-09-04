@@ -32,6 +32,9 @@ namespace GFM2025
         [SerializeField] private float _speedBoostMultiplier = 2f;
         [SerializeField] private float _speedMalusMultiplier = 0.5f;
 
+        [Space]
+
+        [SerializeField] private float _externalSiphonForceMultiplier = 2f;
 
         public float MovementsMaxSpeed => _movementsMaxSpeed;
         public float MovementsAcceleration => _movementsAcceleration;
@@ -50,5 +53,6 @@ namespace GFM2025
         public float ShieldDuration { get => _shieldDuration; set => _shieldDuration = value; }
         public float SpeedBoostMultiplier { get => _speedBoostMultiplier; set => _speedBoostMultiplier = value; }
         public float SpeedMalusMultiplier { get => _speedMalusMultiplier; set => _speedMalusMultiplier = value; }
+        public float ExternalSiphonForceMultiplier { get => _externalSiphonForceMultiplier; set => _externalSiphonForceMultiplier = value; }
     }
 }

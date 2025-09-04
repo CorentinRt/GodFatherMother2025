@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4740692392522704558}
   - component: {fileID: 6242696951509314436}
   - component: {fileID: 5562425379926163616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Siphon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8056259879472430838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,6 +232,10 @@ PrefabInstance:
     - target: {fileID: 6055336179282435284, guid: 8b78a15297484a54f8e9dcac4e34265e, type: 3}
       propertyPath: m_Name
       value: FX_Siphon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055336179282435284, guid: 8b78a15297484a54f8e9dcac4e34265e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
