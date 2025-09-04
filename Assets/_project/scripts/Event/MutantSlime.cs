@@ -1,16 +1,15 @@
-using UnityEngine;
-
-public class MutantSlime : MonoBehaviour
+namespace GFM2025
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class MutantSlime : EventParent
     {
-        
-    }
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        void Update()
+        {
+
+        }
     }
 }

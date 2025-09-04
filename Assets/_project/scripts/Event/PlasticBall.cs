@@ -19,6 +19,11 @@ namespace GFM2025
             {
                 _rgbd.AddForce(Vector3.Reflect(transform.position - collision.transform.position, collision.contacts[0].normal),ForceMode.Impulse);
             }
+            if (collision.transform.tag == "Player")
+            {
+                _rgbd.AddForce(Vector3.Reflect(transform.position - collision.transform.position, collision.contacts[0].normal) * 5, ForceMode.Impulse);
+                PlayerBehaviour.Instance.BouncePlayerBack();
+            }
         }
     }
 }
