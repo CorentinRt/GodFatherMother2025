@@ -74,7 +74,7 @@ public class DataBaseManager : MonoBehaviour
         return data;
     }
 
-    public int GetQTEEventData()
+    public int GetNumberQTEData()
     {
         if (_eventDatabase == null)
         {

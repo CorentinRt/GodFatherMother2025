@@ -5,24 +5,24 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "QTEDataBase", menuName = "data/QTEData", order = 1)]
 public class QTEDataBase : ScriptableObject
 {
-    [SerializeField] private List<QTEData> datas = new();
+    [SerializeField] private List<QTEData> qteListe = new();
 
     public QTEData.TOUCHE[] GetData(int id)
     {
 
-        if (datas == null || datas.Count == 0)
+        if (qteListe == null || qteListe.Count == 0)
         {
             return null;
         }
-        if (id < 0 || id >= datas.Count)
-            id = Random.Range(0, datas.Count);
+        if (id < 0 || id >= qteListe.Count)
+            id = Random.Range(0, qteListe.Count);
         else
-            id = Mathf.Clamp(id, 0, datas.Count - 1);
-        return datas[id].InputListQTE;
+            id = Mathf.Clamp(id, 0, qteListe.Count - 1);
+        return qteListe[id].InputListQTE;
     }
 
     public int QTEDataLenght()
     {
-        return datas.Count;
+        return qteListe.Count;
     }
 }

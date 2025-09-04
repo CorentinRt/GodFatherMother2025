@@ -7,7 +7,10 @@ namespace GFM2025
         private void OnTriggerEnter(Collider other) {
             if(other.gameObject.TryGetComponent<IPlayerBehaviour>(out IPlayerBehaviour player)) {
                 Debug.Log("lance QTE");
-                UI_QTE.Instance.StartQTE();
+                if (UI_QTE.Instance.StartQTE(gameObject))
+                {
+                    _timePass = true;
+                }
                 //InputActionReference
             }
         }

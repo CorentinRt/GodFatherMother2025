@@ -7,7 +7,10 @@ namespace GFM2025
 {
     public class UI_QTE : GenericSingleton<UI_QTE>
     {
-        [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+        [SerializeField] private TextMeshProUGUI[] _textMesh;
+        [SerializeField] private Sprite[] _spriteTouch;
+
+        private GameObject _itemMousse;
 
         private QTEData.TOUCHE[] _inputListQTE;
         private int _index = 0;
@@ -60,34 +63,32 @@ namespace GFM2025
         }
 
 
-        bool VerifPressTouche(int touche)
+        void VerifPressTouche(int touche)
         {
             if (touche == 1 && _inputListQTE[_index] == QTEData.TOUCHE.Gauche)
             {
+                UpdateTextQTE();
                 _index++;
                 CheckQTEEnd();
-                return true;
             }
             else if (touche == 2 && _inputListQTE[_index] == QTEData.TOUCHE.Droite)
             {
+                UpdateTextQTE();
                 _index++;
                 CheckQTEEnd();
-                return true;
             }
             else if (touche == 3 && _inputListQTE[_index] == QTEData.TOUCHE.Top)
             {
+                UpdateTextQTE();
                 _index++;
                 CheckQTEEnd();
-                return true;
             }
             else if (touche == 4 && _inputListQTE[_index] == QTEData.TOUCHE.Bot)
             {
+                UpdateTextQTE();
                 _index++;
                 CheckQTEEnd();
-                return true;
             }
-            else
-                return false;
         }
 
         void CheckQTEEnd()
@@ -99,19 +100,35 @@ namespace GFM2025
             }
         }
 
-        public void StartQTE()
+        public bool StartQTE(GameObject itemMousse)
         {
+            _itemMousse = itemMousse;
             if (!gameObject.activeInHierarchy)
             {
-                _inputListQTE = DataBaseManager.Instance.GetGTEData(UnityEngine.Random.Range(0, DataBaseManager.Instance.GetQTEEventData()));
-                UpdateText();
+                if (DataBaseManager.Instance.GetNumberQTEData() == 0)
+                {
+                    Debug.LogError($"UI_QTE: Aucun qteData trouvé");
+                    return false;
+                }
+                    
+                _inputListQTE = DataBaseManager.Instance.GetGTEData(UnityEngine.Random.Range(0, DataBaseManager.Instance.GetNumberQTEData()));
+
+                if (_inputListQTE.Length == 0)
+                {
+                    Debug.LogError($"UI_QTE: Aucun input trouvé dans la qteData");
+                    return false;
+                }
+                UpdateTextStartQTE();
                 OpenUi();
+                return true;
             }
+            return false;
         }
 
         void EndQTE()
         {
             CloseUi();
+            Destroy(_itemMousse);
         }
         public void OpenUi()
         {
@@ -123,27 +140,31 @@ namespace GFM2025
             gameObject.SetActive(false);
         }
 
-        void UpdateText()
+        void UpdateTextStartQTE()
         {
-            string text = "";
             for (int i = 0; i < _inputListQTE.Count(); i++)
             {
                 switch (_inputListQTE[i]) {
                     case QTEData.TOUCHE.Gauche:
-                        text += "C ";
+                        _textMesh[i].text = "Gauche";
                         break;
                     case QTEData.TOUCHE.Droite:
-                        text += "B ";
+                        _textMesh[i].text = "Droite";
                         break;
                     case QTEData.TOUCHE.Top:
-                        text += "F ";
+                        _textMesh[i].text = "Haut";
                         break;
                     case QTEData.TOUCHE.Bot:
-                        text += "V ";
+                        _textMesh[i].text = "Bas";
                         break;
                 }
-                textMeshProUGUI.text = text;
             }
+        }
+
+        private void UpdateTextQTE()
+        {
+            Debug.Log("change color");
+            _textMesh[_index].color = Color.green;
         }
     }
 }

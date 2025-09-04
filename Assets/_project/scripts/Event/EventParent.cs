@@ -6,13 +6,27 @@ namespace GFM2025
     {
         [HideInInspector] public float lifeTime;
         private float _time = 0;
+        protected bool _timePass;
+
+        private void Start()
+        {
+            _timePass = false;
+        }
 
         void Update()
         {
-            _time += Time.deltaTime;
-            if (_time >= lifeTime)
+            UpdateTime();
+        }
+
+        private void UpdateTime()
+        {
+            if (!_timePass)
             {
-                Destroy(gameObject);
+                _time += Time.deltaTime;
+                if (_time >= lifeTime)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

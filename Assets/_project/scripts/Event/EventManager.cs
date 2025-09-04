@@ -6,6 +6,8 @@ public class EventManager : MonoBehaviour
     [SerializeField] private EventDataBase _eventDataBase;
     private float _time;
 
+    [SerializeField] private float _heightOffset = 1f;
+
     private void Update() {
         _time += Time.deltaTime;
         if (_time >= _eventDataBase.timer) {
@@ -15,25 +17,30 @@ public class EventManager : MonoBehaviour
     }
 
     private void EventCallRandom() {
-        print("eventStart");
         int numbers = 0;
-        for (int i = 0; i < DataBaseManager.Instance.GetNumberEventData(); i++) {
+        for (int i = 0; i < DataBaseManager.Instance.GetNumberEventData(); i++)
+        {
             numbers += DataBaseManager.Instance.GetEventData(i).pourcentage;
         }
         int number = Random.Range(0,numbers);
-        print(number);
-        for (int i = 0; i < DataBaseManager.Instance.GetNumberEventData(); i++) {
+
+        for (int i = 0; i < DataBaseManager.Instance.GetNumberEventData(); i++)
+        {
             int pourcentage = 0;
-            for (int j = 0; j < i+1; j++) {
+            for (int j = 0; j < i+1; j++)
+            {
                 pourcentage += DataBaseManager.Instance.GetEventData(j).pourcentage;
             }
-            if (number <= pourcentage) {
+            if (number <= pourcentage)
+            {
                 EventData item = DataBaseManager.Instance.GetEventData(i);
-                for (int j = 0; j < item.number; j++) {
-                    GameObject a = Instantiate(item.EventPrefab,new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)), new Quaternion(0,0,0,0));
+                for (int j = 0; j < item.number; j++)
+                {
+                    GameObject a = Instantiate(item.EventPrefab, new Vector3(Random.Range(-5, 5), _heightOffset, Random.Range(-5, 5)), new Quaternion(0, 0, 0, 0), MapBehaviour.Instance.GetWaterTransform());
                     a.GetComponent<EventParent>().lifeTime = item.lifeTime;
                 }
-                print(item.label);
+
+                Debug.Log($"Spawn event : {item.label}", this);
                 break;
             }
         }
