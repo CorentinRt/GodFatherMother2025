@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654302f226c2bd0458e9c6046cc4fe7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventDatabase: {fileID: 11400000, guid: 6ab08d1e45347f64e9bfaa4712d67b36, type: 2}
-  mystereDatabase: {fileID: 11400000, guid: 8cbe7669775c28742badcf3f2eeb8126, type: 2}
+  _eventDatabase: {fileID: 11400000, guid: 6ab08d1e45347f64e9bfaa4712d67b36, type: 2}
+  _mystereDatabase: {fileID: 11400000, guid: 8cbe7669775c28742badcf3f2eeb8126, type: 2}
