@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GFM2025
 {
@@ -9,6 +10,7 @@ namespace GFM2025
             if(other.gameObject.tag == "Player")
             {
                 Debug.Log("lance QTE");
+                //InputActionReference
             }
         }
     }

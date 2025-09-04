@@ -389,6 +389,10 @@ MonoBehaviour:
   _move: {fileID: 7533890078486038789, guid: 68aef4303a7e57a45b6b49da4cf43847, type: 3}
   _rotate: {fileID: 6393537986203108387, guid: 68aef4303a7e57a45b6b49da4cf43847, type: 3}
   _jump: {fileID: -1888471596171554501, guid: 68aef4303a7e57a45b6b49da4cf43847, type: 3}
+  _qteOne: {fileID: 1991735074553722863, guid: 68aef4303a7e57a45b6b49da4cf43847, type: 3}
+  _qteTwo: {fileID: -7734687343223806565, guid: 68aef4303a7e57a45b6b49da4cf43847, type: 3}
+  _qteThree: {fileID: 9032817903147661503, guid: 68aef4303a7e57a45b6b49da4cf43847, type: 3}
+  _qteFour: {fileID: -1693848630369109335, guid: 68aef4303a7e57a45b6b49da4cf43847, type: 3}
   _data: {fileID: 11400000, guid: a3332e7d7b3941448a6a47b3027c9fb6, type: 2}
   _rb: {fileID: 638358341218651784}
   _cameraFollowTarget: {fileID: 6545810202585701753}
