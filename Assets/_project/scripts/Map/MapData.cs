@@ -10,10 +10,12 @@ namespace GFM2025
 
         [Header("Force")]
         [SerializeField] private float _siphonForceOnPlayer;
+        [SerializeField] private float _baseForceOnPlayer;
 
 
         public float TimeToEmpty => _timeToEmpty;
 
         public float SiphonForceOnPlayer => _siphonForceOnPlayer;
+        public float BaseForceOnPlayer => _baseForceOnPlayer;
     }
 }

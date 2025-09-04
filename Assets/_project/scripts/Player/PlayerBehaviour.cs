@@ -1,4 +1,5 @@
 using CREMOT.GameplayUtilities;
+using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,6 +39,8 @@ namespace GFM2025
         private float _moveHorizontalValue;
         private float _rotateValue;
 
+        private Tween _rotateTween;
+
         public PlayerDatas Data => _data;
 
         public Transform CameraFollowTarget => _cameraFollowTarget;
@@ -71,6 +74,8 @@ namespace GFM2025
 
             _pause.action.started += UpdatePauseInput;
 
+            GameManager.Instance.onGameStateChanged += ReceiveChangeGameState;
+
             _rb.maxLinearVelocity = _data.MovementsMaxSpeed;
             _rb.maxAngularVelocity = _data.RotationMaxSpeed;
         }
@@ -93,6 +98,8 @@ namespace GFM2025
             _qteFour.action.started -= UpdateQTEInputFour;
 
             _pause.action.started -= UpdatePauseInput;
+
+            GameManager.Instance.onGameStateChanged -= ReceiveChangeGameState;
         }
 
         private void UpdateMoveInput(InputAction.CallbackContext ctx)
@@ -140,6 +147,8 @@ namespace GFM2025
 
             UpdateMovement(Time.fixedDeltaTime);
 
+            transform.rotation = Quaternion.identity;
+
             //UpdateMoveRotation(Time.fixedDeltaTime);
         }
 
@@ -174,6 +183,10 @@ namespace GFM2025
             {
                 externalForce += MapBehaviour.Instance.Data.SiphonForceOnPlayer * Vector3.forward;
             }
+            else
+            {
+                externalForce += MapBehaviour.Instance.Data.BaseForceOnPlayer * Vector3.forward;
+            }
 
             _rb.linearVelocity += externalForce * deltaTime;
 
@@ -193,6 +206,23 @@ namespace GFM2025
         public PlayerBehaviour GetPlayerBehaviour()
         {
             return this;
+        }
+
+        private void ReceiveChangeGameState(GAME_STATE gameState)
+        {
+            if (_rotateTween != null)
+            {
+                _rotateTween.Kill();
+            }
+
+            if (gameState == GAME_STATE.WATER_DECREASE)
+            {
+                _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, 0f, 0f), _data.TimeToRotate);
+            }
+            else if (gameState == GAME_STATE.RETURN_HOME)
+            {
+                _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, 180f, 0f), _data.TimeToRotate);
+            }
         }
     }
 }

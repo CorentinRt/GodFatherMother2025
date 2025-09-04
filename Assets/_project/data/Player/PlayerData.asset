@@ -16,4 +16,5 @@ MonoBehaviour:
   _movementsAcceleration: 5
   _rotationMaxSpeed: 0.5
   _rotationSpeed: 2
+  _timeToRotate: 2
   _jumpForce: 5
