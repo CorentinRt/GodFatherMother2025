@@ -25,9 +25,14 @@ namespace GFM2025
                 _time += Time.deltaTime;
                 if (_time >= lifeTime)
                 {
-                    Destroy(gameObject);
+                    RequestDestroy();
                 }
             }
+        }
+
+        protected virtual void RequestDestroy()
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -32,7 +32,7 @@ public class EventManager : MonoBehaviour
         for (int i = 0; i < DataBaseManager.Instance.GetNumberEventData(); i++)
         {
             EventData item = DataBaseManager.Instance.GetEventData(i);
-            if (Random.Range(0, 100) < item.pourcentage+item.scalePourcentage*item.pourcentage*tour)
+            if (Random.Range(0, 100) < item.pourcentage + item.scalePourcentage * item.pourcentage * tour)
             {
                 for (int j = 0; j < item.number; j++)
                 {
