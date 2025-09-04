@@ -1,15 +1,16 @@
+using UnityEngine;
+
 namespace GFM2025
 {
     public class MutantSlime : EventParent
     {
-        void Start()
+
+        private void OnTriggerEnter(Collider other)
         {
-
-        }
-
-        void Update()
-        {
-
+            if (other.gameObject.TryGetComponent<IPlayerBehaviour>(out IPlayerBehaviour player))
+            {
+                UI_Slime.Instance.OpendUiSlime();
+            }
         }
     }
 }
