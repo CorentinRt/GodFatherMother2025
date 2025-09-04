@@ -33,7 +33,7 @@ public class EventManager : MonoBehaviour
                     Vector3 minSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) - new Vector3(10f, 0f, 10f);
                     Vector3 maxSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) + new Vector3(10f, 0f, 15f);
 
-                    Vector3 randomPos = new Vector3(Random.Range(minSpawnPos.x, maxSpawnPos.x), _heightOffset, Random.Range(minSpawnPos.z, maxSpawnPos.z));
+                    Vector3 randomPos = new Vector3(Random.Range(minSpawnPos.x, maxSpawnPos.x), MapBehaviour.Instance.GetWaterTransform().position.y + _heightOffset, Random.Range(minSpawnPos.z, maxSpawnPos.z));
 
                     Debug.DrawLine(minSpawnPos, maxSpawnPos, Color.red, 5f);
                     

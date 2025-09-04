@@ -38,6 +38,10 @@ namespace GFM2025
 
         [Space]
 
+        [SerializeField] private GameObject _shieldVisual;
+
+        [Space]
+
         [Header("Camera")]
         [SerializeField] private Transform _cameraFollowTarget;
 
@@ -59,6 +63,14 @@ namespace GFM2025
 
         private bool _forceBlock;
 
+        private bool _isInSpeedBoost;
+        private bool _isInSpeedMalus;
+        private bool _isInShield;
+
+        private float _currentIsInSpeedBoost;
+        private float _currentIsInSpeedMalus;
+        private float _currentIsInShield;
+
         private Tween _rotateTween;
 
         private Coroutine _delayRotatePlayer;
@@ -72,6 +84,8 @@ namespace GFM2025
         public Transform CameraLookAtTarget => _cameraLookAtTarget;
 
         public Transform EventPosition => _eventPosition;
+
+        public bool IsInShield => _isInShield;
 
         public event Action onPressPause;
 
@@ -171,6 +185,39 @@ namespace GFM2025
         }
         #endregion
 
+        private void Update()
+        {
+            if (_isInShield)
+            {
+                _currentIsInShield -= Time.deltaTime;
+
+                if ( _currentIsInShield < 0)
+                {
+                    EndShieldBonus();
+                }
+            }
+
+            if (_isInSpeedBoost)
+            {
+                _currentIsInSpeedBoost -= Time.deltaTime;
+
+                if (_currentIsInSpeedBoost < 0)
+                {
+                    EndSpeedBoostBonus();
+                }
+            }
+
+            if (_isInSpeedMalus)
+            {
+                _currentIsInSpeedMalus -= Time.deltaTime;
+
+                if (_currentIsInSpeedMalus < 0)
+                {
+                    EndSpeedMalus();
+                }
+            }
+        }
+
         private void FixedUpdate()
         {
             if (!CanUpdateMovements())
@@ -234,7 +281,18 @@ namespace GFM2025
 
             dir.Normalize();
 
-            _rb.linearVelocity += dir * _data.MovementsAcceleration * deltaTime;
+            float multiplier = 1f;
+
+            if (_isInSpeedBoost)
+            {
+                multiplier = _data.SpeedBoostMultiplier;
+            }
+            else if (_isInSpeedMalus)
+            {
+                multiplier = _data.SpeedMalusMultiplier;
+            }
+
+            _rb.linearVelocity += dir * _data.MovementsAcceleration * multiplier * deltaTime;
 
             Vector3 externalForce = Vector3.zero;
 
@@ -372,5 +430,51 @@ namespace GFM2025
 
         #endregion
 
+        #region Bonus
+        public void StartShieldBonus()
+        {
+            _isInShield = true;
+
+            _currentIsInShield = _data.ShieldDuration;
+
+            _shieldVisual.SetActive(true);
+        }
+
+        public void EndShieldBonus()
+        {
+            _isInShield = false;
+
+            _shieldVisual.SetActive(false);
+        }
+
+        public void StartSpeedBoostBonus()
+        {
+            _isInSpeedBoost = true;
+
+            _currentIsInSpeedBoost = _data.SpeedBoostDuration;
+
+            EndSpeedMalus();
+        }
+
+        public void EndSpeedBoostBonus()
+        {
+            _isInSpeedBoost = false;
+        }
+
+        public void StartSpeedMalus()
+        {
+            _isInSpeedMalus = true;
+
+            _currentIsInSpeedMalus = _data.SpeedMalusDuration;
+
+            EndSpeedBoostBonus();
+        }
+
+        public void EndSpeedMalus()
+        {
+            _isInSpeedMalus = false;
+        }
+
+        #endregion
     }
 }
