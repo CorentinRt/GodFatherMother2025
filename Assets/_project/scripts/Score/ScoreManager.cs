@@ -84,8 +84,6 @@ namespace GFM2025
 
                 yield return new WaitForSeconds(_data.DelayBetweenEachScore);
             }
-
-            yield return null;
         }
 
     }

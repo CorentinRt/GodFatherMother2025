@@ -4,6 +4,7 @@ namespace GFM2025
 {
     public class PlasticBall : EventParent {
         private Rigidbody _rgbd;
+        [SerializeField] private PlasticBallDataBase _data;
 
         private void OnEnable() {
             TryGetComponent(out _rgbd);
@@ -17,7 +18,12 @@ namespace GFM2025
         {
             if (collision.transform.tag == "PlasticBall")
             {
-                _rgbd.AddForce(Vector3.Reflect(transform.position - collision.transform.position, collision.contacts[0].normal),ForceMode.Impulse);
+                _rgbd.AddForce(Vector3.Reflect(collision.transform.position - transform.position, collision.contacts[0].normal) * _data.bounce, ForceMode.Impulse);
+            }
+            if (collision.transform.tag == "Player")
+            {
+                _rgbd.AddForce(Vector3.Reflect(collision.transform.position - transform.position, collision.contacts[0].normal) * _data.bounce, ForceMode.Impulse);
+                PlayerBehaviour.Instance.BouncePlayerBack();
             }
         }
     }

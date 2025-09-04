@@ -13,34 +13,47 @@ MonoBehaviour:
   m_Name: EventDataBase
   m_EditorClassIdentifier: 
   timer: 5
+  scaleTimer: 0.1
   events:
   - label: PlasticBall
     EventPrefab: {fileID: 7120910818878265562, guid: ae4c9f6e371d68a49831e3574892c5fe, type: 3}
-    pourcentage: 0
+    pourcentage: 25
+    scalePourcentage: 0.1
+    nombreTourAvantApparition: 0
     number: 5
-    lifeTime: 0
+    lifeTime: 15
   - label: DogToy
     EventPrefab: {fileID: 720285049858528518, guid: 8ee21a6222d0eb644827425d490a511a, type: 3}
-    pourcentage: 0
+    pourcentage: 25
+    scalePourcentage: 0.1
+    nombreTourAvantApparition: 0
     number: 1
-    lifeTime: 0
+    lifeTime: 5
   - label: Slime mutant
     EventPrefab: {fileID: 0}
     pourcentage: 0
+    scalePourcentage: 1
+    nombreTourAvantApparition: 1
     number: 0
     lifeTime: 0
   - label: mystere
     EventPrefab: {fileID: 0}
     pourcentage: 0
+    scalePourcentage: 0
+    nombreTourAvantApparition: 1
     number: 0
     lifeTime: 0
   - label: montagne de mousse
     EventPrefab: {fileID: 3964659222429195938, guid: bec881b11bbd8874083ed3864c2daf8e, type: 3}
-    pourcentage: 15
+    pourcentage: 0
+    scalePourcentage: 1
+    nombreTourAvantApparition: 0
     number: 1
-    lifeTime: 171
+    lifeTime: 10
   - label: siphon
     EventPrefab: {fileID: 510875282530834964, guid: 5cd8dac0ceae6e142962372ace7a401a, type: 3}
     pourcentage: 0
+    scalePourcentage: 0
+    nombreTourAvantApparition: 3
     number: 1
     lifeTime: 10

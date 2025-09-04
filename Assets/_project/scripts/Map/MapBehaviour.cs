@@ -13,6 +13,9 @@ namespace GFM2025
         [SerializeField] private Transform _waterLevel;
         [SerializeField] private Transform _waterEmptyLevel;
 
+        [SerializeField] private Transform _eventZoneStart;
+        [SerializeField] private Transform _eventZoneEnd;
+
         private Vector3 _waterFillPosition;
         private Vector3 _waterEmptyPosition;
 
@@ -67,5 +70,17 @@ namespace GFM2025
         {
             return _waterLevel;
         }
+
+        public bool PositionIsInEventZone(Vector3 position)
+        {
+            if (position.z > _eventZoneEnd.position.x)
+                return false;
+
+            if (position.z < _eventZoneStart.position.x)
+                return false;
+
+            return true;
+        }
+
     }
 }

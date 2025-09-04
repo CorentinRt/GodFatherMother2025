@@ -6,7 +6,9 @@ public class EventData
 {
     public string label;
     public GameObject EventPrefab;
-    public int pourcentage;
+    public float pourcentage;
+    public float scalePourcentage;
+    public int nombreTourAvantApparition;
     public int number;
-    public int lifeTime;
+    public float lifeTime;
 }
