@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d738dc08a1fe28478c1cbba8bd14d4a, type: 3}
   m_Name: SlimeDataBase
   m_EditorClassIdentifier: 
-  _lifeTime: 9
-  _timeFadeIn: 3
+  lifeTime: 9
+  timeFadeIn: 3
