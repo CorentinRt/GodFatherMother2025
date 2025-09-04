@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12148651f868ab749924bf38f935d618, type: 3}
   m_Name: MapData
   m_EditorClassIdentifier: 
-  _timeToEmpty: 20
-  _siphonForceOnPlayer: 6
-  _baseForceOnPlayer: 3
+  _timeToEmpty: 120
+  _siphonForceOnPlayer: 10
+  _baseForceOnPlayer: 5
