@@ -409,8 +409,6 @@ namespace GFM2025
             if (siphon == null)
                 return Vector3.zero;
 
-            Debug.Log("Get closest siphon", siphon.gameObject);
-
             Vector3 force = siphon.transform.position - transform.position;
 
             force.y = 0f;
