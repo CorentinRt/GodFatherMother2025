@@ -99,6 +99,10 @@ namespace GFM2025
             {
                 _index = 0;
                 EndQTE();
+                for (int i = 0; i < _zoneSprite.Length; i++)
+                {
+                    _zoneSprite[i].color = Color.white;
+                }
             }
         }
 
@@ -166,7 +170,7 @@ namespace GFM2025
         private void UpdateTextQTE()
         {
             Debug.Log("change color");
-            _textMesh[_index].color = Color.green;
+            _zoneSprite[_index].color = Color.green;
         }
     }
 }
