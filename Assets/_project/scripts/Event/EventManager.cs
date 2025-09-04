@@ -36,8 +36,8 @@ public class EventManager : MonoBehaviour
             {
                 for (int j = 0; j < item.number; j++)
                 {
-                    Vector3 minSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) - new Vector3(12f, 0f, 10f);
-                    Vector3 maxSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) + new Vector3(12f, 0f, 15f);
+                    Vector3 minSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) - new Vector3(10f, 0f, 10f);
+                    Vector3 maxSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) + new Vector3(10f, 0f, 15f);
 
                     Vector3 randomPos = new Vector3(Random.Range(minSpawnPos.x, maxSpawnPos.x), _heightOffset, Random.Range(minSpawnPos.z, maxSpawnPos.z));
 
