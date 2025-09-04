@@ -36,6 +36,7 @@ public class EventManager : MonoBehaviour
                 EventData item = DataBaseManager.Instance.GetEventData(i);
                 for (int j = 0; j < item.number; j++)
                 {
+
                     GameObject a = Instantiate(item.EventPrefab, new Vector3(Random.Range(-5, 5), _heightOffset, Random.Range(-5, 5)), new Quaternion(0, 0, 0, 0), MapBehaviour.Instance.GetWaterTransform());
                     a.GetComponent<EventParent>().lifeTime = item.lifeTime;
                 }

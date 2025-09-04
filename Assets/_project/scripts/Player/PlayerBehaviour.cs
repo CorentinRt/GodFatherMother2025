@@ -1,6 +1,7 @@
 using CREMOT.GameplayUtilities;
 using DG.Tweening;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -42,6 +43,10 @@ namespace GFM2025
 
         [SerializeField] private Transform _cameraLookAtTarget;
 
+        [Space]
+
+        [Header("Event position")]
+        [SerializeField] private Transform _eventPosition;
 
         private float _moveVerticalValue;
         private float _moveHorizontalValue;
@@ -50,7 +55,11 @@ namespace GFM2025
         private bool _hasJumped;
         private float _currentJumpCooldown;
 
+        private bool _forceBlock;
+
         private Tween _rotateTween;
+
+        private Coroutine _delayRotatePlayer;
 
         public PlayerDatas Data => _data;
 
@@ -58,6 +67,7 @@ namespace GFM2025
 
         public Transform CameraLookAtTarget => _cameraLookAtTarget;
 
+        public Transform EventPosition => _eventPosition;
 
         public event Action onPressPause;
 
@@ -198,6 +208,9 @@ namespace GFM2025
             if (GameManager.Instance.CurrentGameState == GAME_STATE.END_GAME || GameManager.Instance.CurrentGameState == GAME_STATE.PRE_GAME)
                 return false;
 
+            if (_forceBlock)
+                return false;
+
             return true;
         }
 
@@ -260,9 +273,9 @@ namespace GFM2025
                 _rotateTween.Kill();
             }
 
-            if (gameState == GAME_STATE.WATER_DECREASE)
+            if (gameState == GAME_STATE.SCORING)
             {
-                _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, 0f, 0f), _data.TimeToRotate);
+                StartDelayRotatePlayer(0f);
             }
             else if (gameState == GAME_STATE.RETURN_HOME)
             {
@@ -270,10 +283,44 @@ namespace GFM2025
             }
         }
 
+        private void StartDelayRotatePlayer(float rotationY)
+        {
+            StopDelayRotatePlayer();
+
+            _delayRotatePlayer = StartCoroutine(DelayRotatePlayer(rotationY));
+        }
+
+        private void StopDelayRotatePlayer()
+        {
+            if (_delayRotatePlayer != null)
+            {
+                StopCoroutine(_delayRotatePlayer);
+                _delayRotatePlayer = null;
+            }
+        }
+
+        private IEnumerator DelayRotatePlayer(float rotationY)
+        {
+            yield return new WaitForSeconds(1f);
+
+            _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, rotationY, 0f), _data.TimeToRotate);
+        }
+
         public void BouncePlayerBack()
         {
             _rb.AddForce(_rotationAnchor.forward * -1 * _data.BounceForce, ForceMode.Impulse);
         }
         
+        public void StartForceBlockPlayer()
+        {
+            _forceBlock = true;
+
+            _rb.linearVelocity = Vector3.zero;
+        }
+
+        public void StopForceBlockPlayer()
+        {
+            _forceBlock = false;
+        }
     }
 }
