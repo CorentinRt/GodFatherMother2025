@@ -60,5 +60,10 @@ namespace GFM2025
 
             onUpdateWaterLevelPercent?.Invoke(currentTimePercent);
         }
+
+        public Transform GetWaterTransform()
+        {
+            return _waterLevel;
+        }
     }
 }
