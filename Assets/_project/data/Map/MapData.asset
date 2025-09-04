@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeToEmpty: 20
   _siphonForceOnPlayer: 6
+  _baseForceOnPlayer: 3
