@@ -10,9 +10,14 @@ namespace GFM2025
 
         [SerializeField] private int _amountByScore = 15;
 
+        [Space]
+
+        [SerializeField] private int _returnHomeScoreAmount = 50;
 
         public float DelayBetweenEachScore => _delayBetweenEachScore;
 
         public int AmountByScore => _amountByScore;
+
+        public int ReturnHomeScoreAmount => _returnHomeScoreAmount;
     }
 }

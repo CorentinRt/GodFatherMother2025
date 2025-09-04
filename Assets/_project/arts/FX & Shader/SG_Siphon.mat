@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Amplify Shader
+  m_Name: SG_Siphon
   m_Shader: {fileID: 4800000, guid: f134076d20f6e294b9254dd087b7b80c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -46,7 +46,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Round_Inner_Size: 0
+    - _Round_Inner_Size: 0.375
     - _Round_Inner_Smoothness: 0.37
     - _Round_Outer_Smoothness: 0.67
     - _Round_outer_Size: 0.5

@@ -37,12 +37,12 @@ MonoBehaviour:
     number: 1
     lifeTime: 15
   - label: mystere
-    EventPrefab: {fileID: 0}
-    pourcentage: 0
-    scalePourcentage: 0
+    EventPrefab: {fileID: 3775036168187991143, guid: 298c90f2bbd5d9849bfcc32754190a4f, type: 3}
+    pourcentage: 75
+    scalePourcentage: 0.1
     nombreTourAvantApparition: 1
-    number: 0
-    lifeTime: 0
+    number: 1
+    lifeTime: 15
   - label: montagne de mousse
     EventPrefab: {fileID: 3964659222429195938, guid: bec881b11bbd8874083ed3864c2daf8e, type: 3}
     pourcentage: 0
@@ -52,8 +52,8 @@ MonoBehaviour:
     lifeTime: 10
   - label: siphon
     EventPrefab: {fileID: 510875282530834964, guid: 5cd8dac0ceae6e142962372ace7a401a, type: 3}
-    pourcentage: 0
-    scalePourcentage: 0
+    pourcentage: 25
+    scalePourcentage: 0.1
     nombreTourAvantApparition: 3
     number: 1
     lifeTime: 10

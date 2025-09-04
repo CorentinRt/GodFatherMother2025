@@ -87,7 +87,7 @@ namespace GFM2025
             if (!_shouldShake)
                 return;
 
-            _shakeTween = _containerWaterSlide.transform.DOShakePosition(0.5f, 5, 10, 90, false, true).OnComplete(() => ShakeLoop());
+            _shakeTween = _containerWaterSlide.transform.DOShakePosition(0.5f, 10, 10, 90, false, true).OnComplete(() => ShakeLoop());
         }
 
         public void StopShake()

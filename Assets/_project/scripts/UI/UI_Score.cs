@@ -9,7 +9,12 @@ namespace GFM2025
         [Header("UI Score")]
         [SerializeField] private TextMeshProUGUI _scoreText;
 
+        [Header("Tour count")]
+        [SerializeField] private TextMeshProUGUI _tourText;
+
         public UnityEvent onUpdateScoreTextUnity;
+
+        public UnityEvent onUpdateTourTextUnity;
 
         private void Start()
         {
@@ -26,6 +31,9 @@ namespace GFM2025
             {
                 Debug.LogError("Error : No ScoreManager singleton found in scene ! Init of its UIs won't work properly !", this);
             }
+
+            GameManager.Instance.onChangeTour += UpdateTourText;
+
         }
 
         private void OnDestroy()
@@ -34,6 +42,8 @@ namespace GFM2025
             {
                 ScoreManager.Instance.onScorePoints -= UpdateScoreText;
             }
+
+            GameManager.Instance.onChangeTour -= UpdateTourText;
         }
 
         private void UpdateScoreText(int score)
@@ -41,6 +51,15 @@ namespace GFM2025
             _scoreText.text = score.ToString();
 
             onUpdateScoreTextUnity?.Invoke();
+        }
+
+        private void UpdateTourText(int tour)
+        {
+            Debug.Log("Update tour text", this);
+
+            _tourText.text = tour.ToString();
+
+            onUpdateTourTextUnity?.Invoke();
         }
     }
 }
