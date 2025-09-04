@@ -29,6 +29,14 @@ namespace GFM2025
         [SerializeField] private bool _useHorizontalMovement = true;
         [SerializeField] private Transform _rotationAnchor;
 
+        [Space]
+
+        [SerializeField] private LayerMask _mapLayerMask;
+        [SerializeField] private float _groundedLength;
+        [SerializeField] private float _jumpCooldown;
+
+        [Space]
+
         [Header("Camera")]
         [SerializeField] private Transform _cameraFollowTarget;
 
@@ -38,6 +46,9 @@ namespace GFM2025
         private float _moveVerticalValue;
         private float _moveHorizontalValue;
         private float _rotateValue;
+
+        private bool _hasJumped;
+        private float _currentJumpCooldown;
 
         private Tween _rotateTween;
 
@@ -147,11 +158,36 @@ namespace GFM2025
             if (!CanUpdateMovements())
                 return;
 
+            if (IsGrounded() && _currentJumpCooldown <= 0f)
+            {
+                _hasJumped = false;
+            }
+
+            if (_currentJumpCooldown > 0f)
+            {
+                _currentJumpCooldown -= Time.fixedDeltaTime;
+            }
+
             UpdateMovement(Time.fixedDeltaTime);
 
             transform.rotation = Quaternion.identity;
 
             //UpdateMoveRotation(Time.fixedDeltaTime);
+        }
+
+        private bool IsGrounded()
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundedLength, _mapLayerMask))
+            {
+                if (hit.transform == null)
+                    return false;
+
+                return true;
+            }
+
+            return false;
         }
 
         private bool CanUpdateMovements()
@@ -202,6 +238,13 @@ namespace GFM2025
 
         private void Jump()
         {
+            if (_hasJumped)
+                return;
+
+            _hasJumped = true;
+
+            _currentJumpCooldown = _jumpCooldown;
+
             _rb.AddForce(Vector3.up * _data.JumpForce, ForceMode.Impulse);
         }
 
@@ -226,5 +269,8 @@ namespace GFM2025
                 _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, 180f, 0f), _data.TimeToRotate);
             }
         }
+
+
+        
     }
 }

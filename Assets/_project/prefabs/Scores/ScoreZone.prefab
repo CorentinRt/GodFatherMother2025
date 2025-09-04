@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1811129341050404581}
   - component: {fileID: 770880233957172284}
   - component: {fileID: 8761846859696352839}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ScoreZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

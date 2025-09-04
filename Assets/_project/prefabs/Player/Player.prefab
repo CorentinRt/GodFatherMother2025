@@ -430,5 +430,10 @@ MonoBehaviour:
   _rb: {fileID: 638358341218651784}
   _useHorizontalMovement: 1
   _rotationAnchor: {fileID: 2344512215347617514}
+  _mapLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _groundedLength: 0.4
+  _jumpCooldown: 1
   _cameraFollowTarget: {fileID: 6545810202585701753}
   _cameraLookAtTarget: {fileID: 8307994310148662124}
