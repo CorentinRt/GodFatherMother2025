@@ -125,6 +125,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "1D Axis",
+                    "id": "f0b7012b-a82c-41cc-8958-5c409d41c667",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "b67c173c-b90c-48d4-802b-740cf802064e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d662f238-0507-4129-b786-8f9921776fb1",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "c57e3240-7f73-4b11-8a8b-1e61eea91b77",
                     "path": "<Gamepad>/dpad/x",
@@ -215,7 +248,7 @@
                 {
                     "name": "",
                     "id": "17fe8c8d-74b0-4f0b-a894-12e0fbf52be6",
-                    "path": "",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -226,7 +259,7 @@
                 {
                     "name": "",
                     "id": "c19aaa1c-ea62-4b7d-91c8-55eb74829e45",
-                    "path": "",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -237,7 +270,7 @@
                 {
                     "name": "",
                     "id": "e49a4946-b692-4027-bba9-3b510711ac4d",
-                    "path": "",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -248,7 +281,7 @@
                 {
                     "name": "",
                     "id": "7dc4caa8-34cc-4bc2-ac71-c1995e8f6ad4",
-                    "path": "",
+                    "path": "<Keyboard>/v",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

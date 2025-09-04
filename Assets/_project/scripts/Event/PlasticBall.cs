@@ -10,12 +10,14 @@ namespace GFM2025
         }
 
         private void Start() {
-            _rgbd.linearVelocity = new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f));
+            _rgbd.linearVelocity = new Vector3(Random.Range(-10f, 10f), 0, Random.Range(-10f, 10f)).normalized;
         }
 
-        private void OnTriggerEnter(Collider other) {
-            if (other.transform.tag == "PlasticBall") {
-                _rgbd.linearVelocity = -_rgbd.linearVelocity;
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.tag == "PlasticBall")
+            {
+                _rgbd.AddForce(Vector3.Reflect(transform.position - collision.transform.position, collision.contacts[0].normal),ForceMode.Impulse);
             }
         }
     }
