@@ -18,6 +18,8 @@ namespace GFM2025
 
         private float _currentEmptiedTime;
 
+        public MapData Data => _data;
+
         public event Action<float> onUpdateWaterLevelPercent;
 
         public void Init()
