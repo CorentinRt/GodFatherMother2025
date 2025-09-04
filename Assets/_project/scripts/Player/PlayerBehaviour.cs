@@ -270,7 +270,10 @@ namespace GFM2025
             }
         }
 
-
+        public void BouncePlayerBack()
+        {
+            _rb.AddForce(_rotationAnchor.forward * -1 * _data.BounceForce, ForceMode.Impulse);
+        }
         
     }
 }

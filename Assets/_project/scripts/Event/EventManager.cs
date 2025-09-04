@@ -6,6 +6,8 @@ public class EventManager : MonoBehaviour
     [SerializeField] private EventDataBase _eventDataBase;
     private float _time;
 
+    [SerializeField] private float _heightOffset = 1f;
+
     private void Update() {
         _time += Time.deltaTime;
         if (_time >= _eventDataBase.timer) {
@@ -34,7 +36,7 @@ public class EventManager : MonoBehaviour
                 EventData item = DataBaseManager.Instance.GetEventData(i);
                 for (int j = 0; j < item.number; j++)
                 {
-                    GameObject a = Instantiate(item.EventPrefab,new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)), new Quaternion(0,0,0,0));
+                    GameObject a = Instantiate(item.EventPrefab, new Vector3(Random.Range(-5, 5), _heightOffset, Random.Range(-5, 5)), new Quaternion(0, 0, 0, 0), MapBehaviour.Instance.GetWaterTransform());
                     a.GetComponent<EventParent>().lifeTime = item.lifeTime;
                 }
 
