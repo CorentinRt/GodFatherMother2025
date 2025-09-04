@@ -105,6 +105,8 @@ namespace GFM2025
         private void UpdateMoveInput(InputAction.CallbackContext ctx)
         {
             _moveVerticalValue = ctx.ReadValue<float>();
+
+            _moveVerticalValue = Mathf.Min(0f, _moveVerticalValue);
         }
 
         private void UpdateRotateInput(InputAction.CallbackContext ctx)
@@ -181,11 +183,11 @@ namespace GFM2025
 
             if (GameManager.Instance.CurrentGameState == GAME_STATE.WATER_DECREASE)
             {
-                externalForce += MapBehaviour.Instance.Data.SiphonForceOnPlayer * Vector3.forward;
+                externalForce += MapBehaviour.Instance.Data.SiphonForceOnPlayer * _rotationAnchor.forward;
             }
             else
             {
-                externalForce += MapBehaviour.Instance.Data.BaseForceOnPlayer * Vector3.forward;
+                externalForce += MapBehaviour.Instance.Data.BaseForceOnPlayer * _rotationAnchor.forward;
             }
 
             _rb.linearVelocity += externalForce * deltaTime;
