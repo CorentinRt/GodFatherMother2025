@@ -26,6 +26,7 @@ namespace GFM2025
         [Header("Movements")]
         [SerializeField] private Rigidbody _rb;
         [SerializeField] private bool _useHorizontalMovement = true;
+        [SerializeField] private Transform _rotationAnchor;
 
         [Header("Camera")]
         [SerializeField] private Transform _cameraFollowTarget;
@@ -165,6 +166,16 @@ namespace GFM2025
             dir.Normalize();
 
             _rb.linearVelocity += dir * _data.MovementsAcceleration * deltaTime;
+
+            Vector3 externalForce = Vector3.zero;
+
+
+            if (GameManager.Instance.CurrentGameState == GAME_STATE.WATER_DECREASE)
+            {
+                externalForce += MapBehaviour.Instance.Data.SiphonForceOnPlayer * Vector3.forward;
+            }
+
+            _rb.linearVelocity += externalForce * deltaTime;
 
         }
 
