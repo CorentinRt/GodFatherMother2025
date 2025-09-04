@@ -1,6 +1,7 @@
 using CREMOT.GameplayUtilities;
 using DG.Tweening;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -57,6 +58,8 @@ namespace GFM2025
         private bool _forceBlock;
 
         private Tween _rotateTween;
+
+        private Coroutine _delayRotatePlayer;
 
         public PlayerDatas Data => _data;
 
@@ -270,14 +273,37 @@ namespace GFM2025
                 _rotateTween.Kill();
             }
 
-            if (gameState == GAME_STATE.WATER_DECREASE)
+            if (gameState == GAME_STATE.SCORING)
             {
-                _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, 0f, 0f), _data.TimeToRotate);
+                StartDelayRotatePlayer(0f);
             }
             else if (gameState == GAME_STATE.RETURN_HOME)
             {
                 _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, 180f, 0f), _data.TimeToRotate);
             }
+        }
+
+        private void StartDelayRotatePlayer(float rotationY)
+        {
+            StopDelayRotatePlayer();
+
+            _delayRotatePlayer = StartCoroutine(DelayRotatePlayer(rotationY));
+        }
+
+        private void StopDelayRotatePlayer()
+        {
+            if (_delayRotatePlayer != null)
+            {
+                StopCoroutine(_delayRotatePlayer);
+                _delayRotatePlayer = null;
+            }
+        }
+
+        private IEnumerator DelayRotatePlayer(float rotationY)
+        {
+            yield return new WaitForSeconds(1f);
+
+            _rotateTween = _rotationAnchor.DORotate(new Vector3(0f, rotationY, 0f), _data.TimeToRotate);
         }
 
         public void BouncePlayerBack()
