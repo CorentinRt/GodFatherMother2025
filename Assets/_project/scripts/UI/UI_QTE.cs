@@ -60,34 +60,28 @@ namespace GFM2025
         }
 
 
-        bool VerifPressTouche(int touche)
+        void VerifPressTouche(int touche)
         {
             if (touche == 1 && _inputListQTE[_index] == QTEData.TOUCHE.Gauche)
             {
                 _index++;
                 CheckQTEEnd();
-                return true;
             }
             else if (touche == 2 && _inputListQTE[_index] == QTEData.TOUCHE.Droite)
             {
                 _index++;
                 CheckQTEEnd();
-                return true;
             }
             else if (touche == 3 && _inputListQTE[_index] == QTEData.TOUCHE.Top)
             {
                 _index++;
                 CheckQTEEnd();
-                return true;
             }
             else if (touche == 4 && _inputListQTE[_index] == QTEData.TOUCHE.Bot)
             {
                 _index++;
                 CheckQTEEnd();
-                return true;
             }
-            else
-                return false;
         }
 
         void CheckQTEEnd()
@@ -103,7 +97,19 @@ namespace GFM2025
         {
             if (!gameObject.activeInHierarchy)
             {
-                _inputListQTE = DataBaseManager.Instance.GetGTEData(UnityEngine.Random.Range(0, DataBaseManager.Instance.GetQTEEventData()));
+                if (DataBaseManager.Instance.GetNumberQTEData() == 0)
+                {
+                    Debug.LogError($"UI_QTE: Aucun qteData trouvé");
+                    return;
+                }
+                    
+                _inputListQTE = DataBaseManager.Instance.GetGTEData(UnityEngine.Random.Range(0, DataBaseManager.Instance.GetNumberQTEData()));
+
+                if (_inputListQTE.Length == 0)
+                {
+                    Debug.LogError($"UI_QTE: Aucun input trouvé dans la qteData");
+                    return;
+                }
                 UpdateText();
                 OpenUi();
             }
