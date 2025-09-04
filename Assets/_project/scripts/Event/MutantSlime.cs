@@ -7,10 +7,12 @@ namespace GFM2025
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent<IPlayerBehaviour>(out IPlayerBehaviour player))
-            {
-                UI_Slime.Instance.OpendUiSlime();
-            }
+            if (!other.gameObject.TryGetComponent<IPlayerBehaviour>(out IPlayerBehaviour player))
+                return;
+
+            UI_Slime.Instance.OpendUiSlime();
+
+            player.GetPlayerBehaviour().StartInvertInput();
         }
     }
 }

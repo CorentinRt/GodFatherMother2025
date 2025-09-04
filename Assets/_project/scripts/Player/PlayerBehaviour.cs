@@ -66,10 +66,12 @@ namespace GFM2025
         private bool _isInSpeedBoost;
         private bool _isInSpeedMalus;
         private bool _isInShield;
+        private bool _isInInvertInput;
 
         private float _currentIsInSpeedBoost;
         private float _currentIsInSpeedMalus;
         private float _currentIsInShield;
+        private float _currentIsInInvertInput;
 
         private Tween _rotateTween;
 
@@ -148,6 +150,11 @@ namespace GFM2025
         {
             _moveVerticalValue = ctx.ReadValue<float>();
 
+            if (_isInInvertInput)
+            {
+                _moveVerticalValue *= -1;
+            }
+
             _moveVerticalValue = Mathf.Min(0f, _moveVerticalValue);
         }
 
@@ -155,6 +162,11 @@ namespace GFM2025
         {
             _rotateValue = ctx.ReadValue<float>();
             _moveHorizontalValue = ctx.ReadValue<float>();
+
+            if (_isInInvertInput)
+            {
+                _moveHorizontalValue *= -1;
+            }
         }
 
         private void UpdateJumpInput(InputAction.CallbackContext ctx)
@@ -492,6 +504,18 @@ namespace GFM2025
         public void EndSpeedMalus()
         {
             _isInSpeedMalus = false;
+        }
+
+        public void StartInvertInput()
+        {
+            _isInInvertInput = true;
+
+            _currentIsInInvertInput = _data.InvertInputDuration;
+        }
+
+        public void EndInvertInput()
+        {
+            _isInInvertInput = false;
         }
 
         #endregion
