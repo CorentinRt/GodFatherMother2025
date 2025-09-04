@@ -10,6 +10,11 @@ public class EventDataBase : ScriptableObject
 
     public EventData GetData(int id)
     {
+        if (events == null || events.Count==0)
+        {
+            return null;
+        }
+
         if (id < 0 || id >= events.Count)
             id = Random.Range(0, events.Count);
         else

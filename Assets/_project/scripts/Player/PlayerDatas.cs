@@ -9,19 +9,23 @@ namespace GFM2025
         [SerializeField] private float _movementsMaxSpeed;
         [SerializeField] private float _movementsAcceleration;
 
-        [Header("Rotation")]
+        [Header("Rotation Obsolete")]
         [SerializeField] private float _rotationMaxSpeed;
         [SerializeField] private float _rotationSpeed;
 
+        [Header("New Rotation")]
+        [SerializeField] private float _timeToRotate;
+
         [Header("Jump")]
         [SerializeField] private float _jumpForce;
-
 
         public float MovementsMaxSpeed => _movementsMaxSpeed;
         public float MovementsAcceleration => _movementsAcceleration;
 
         public float RotationMaxSpeed => _rotationMaxSpeed;
         public float RotationSpeed => _rotationSpeed;
+
+        public float TimeToRotate => _timeToRotate;
 
         public float JumpForce => _jumpForce;
     }

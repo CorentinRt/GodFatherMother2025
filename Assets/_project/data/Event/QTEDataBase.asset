@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85daf2e837a07034fb6b961e2ec0567a, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 9ee2c7bfc40bda343966c3ed132c8f6c, type: 3}
+  m_Name: QTEDataBase
   m_EditorClassIdentifier: 
-  _movementsMaxSpeed: 10
-  _movementsAcceleration: 5
-  _rotationMaxSpeed: 0.5
-  _rotationSpeed: 2
-  _timeToRotate: 2
-  _jumpForce: 5
+  datas:
+  - InputListQTE: 00000000

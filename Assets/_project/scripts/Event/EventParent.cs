@@ -4,7 +4,7 @@ namespace GFM2025
 {
     public class EventParent : MonoBehaviour
     {
-        public float lifeTime;
+        [HideInInspector] public float lifeTime;
         private float _time = 0;
 
         void Update()
