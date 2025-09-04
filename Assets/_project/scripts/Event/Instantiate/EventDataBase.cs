@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EventDataBase", menuName = "data/EventData", order = 1)]
 public class EventDataBase : ScriptableObject
 {
-    public int timer;
+    public float timer;
+    public float scaleTimer;
     [SerializeField] private List<EventData> events = new();
 
     public EventData GetData(int id)
