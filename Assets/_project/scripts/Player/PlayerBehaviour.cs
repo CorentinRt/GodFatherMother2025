@@ -156,11 +156,11 @@ namespace GFM2025
 
         private void UpdateMovement(float deltaTime)
         {
-            Vector3 dir = transform.forward * _moveVerticalValue;
+            Vector3 dir = _rotationAnchor.forward * _moveVerticalValue;
 
             if (_useHorizontalMovement)
             {
-                dir += transform.right * _moveHorizontalValue;
+                dir += _rotationAnchor.right * _moveHorizontalValue;
             }
 
             dir.Normalize();
