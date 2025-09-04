@@ -2,6 +2,7 @@ using UnityEngine;
 using CREMOT.GameplayUtilities;
 using TMPro;
 using System.Linq;
+using UnityEngine.UI;
 
 namespace GFM2025
 {
@@ -9,6 +10,7 @@ namespace GFM2025
     {
         [SerializeField] private TextMeshProUGUI[] _textMesh;
         [SerializeField] private Sprite[] _spriteTouch;
+        [SerializeField] private Image[] _zoneSprite;
 
         private GameObject _itemMousse;
 
@@ -146,16 +148,16 @@ namespace GFM2025
             {
                 switch (_inputListQTE[i]) {
                     case QTEData.TOUCHE.Gauche:
-                        _textMesh[i].text = "Gauche";
+                        _zoneSprite[i].sprite = _spriteTouch[0];
                         break;
                     case QTEData.TOUCHE.Droite:
-                        _textMesh[i].text = "Droite";
+                        _zoneSprite[i].sprite = _spriteTouch[1];
                         break;
                     case QTEData.TOUCHE.Top:
-                        _textMesh[i].text = "Haut";
+                        _zoneSprite[i].sprite = _spriteTouch[2];
                         break;
                     case QTEData.TOUCHE.Bot:
-                        _textMesh[i].text = "Bas";
+                        _zoneSprite[i].sprite = _spriteTouch[3];
                         break;
                 }
             }
