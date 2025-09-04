@@ -399,7 +399,11 @@ namespace GFM2025
         }
         #endregion
 
-        #region Detect Siphon
+        #region Siphon
+        private void HandleClosestSiphon()
+        {
+
+        }
 
         private Siphon GetClosestSiphon()
         {
