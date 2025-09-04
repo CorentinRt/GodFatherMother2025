@@ -20,7 +20,7 @@ namespace GFM2025
         [SerializeField] private float _jumpForce;
 
         [Header("Bounce")]
-        private float _bounceForce = 3f;
+        [SerializeField] private float _bounceForce = 3f;
 
         public float MovementsMaxSpeed => _movementsMaxSpeed;
         public float MovementsAcceleration => _movementsAcceleration;
