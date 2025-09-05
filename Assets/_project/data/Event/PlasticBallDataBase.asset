@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4cd4cde9e82f643afc9720e46e2cfb, type: 3}
   m_Name: PlasticBallDataBase
   m_EditorClassIdentifier: 
-  datas:
-    bounce: 3
+  bounce: 5
