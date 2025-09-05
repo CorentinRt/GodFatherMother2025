@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85daf2e837a07034fb6b961e2ec0567a, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _movementsMaxSpeed: 10
-  _movementsAcceleration: 5
+  _movementsMaxSpeed: 20
+  _movementsAcceleration: 10
   _rotationMaxSpeed: 0.5
   _rotationSpeed: 2
   _timeToRotate: 2
   _jumpForce: 5
+  _bounceForce: 7
+  _speedBoostDuration: 5
+  _speedMalusDuration: 5
+  _shieldDuration: 5
+  _speedBoostMultiplier: 2
+  _speedMalusMultiplier: 0.5
+  _externalSiphonForceMultiplier: 0.03

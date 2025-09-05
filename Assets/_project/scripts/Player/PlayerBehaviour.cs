@@ -30,11 +30,17 @@ namespace GFM2025
         [SerializeField] private bool _useHorizontalMovement = true;
         [SerializeField] private Transform _rotationAnchor;
 
+        [SerializeField] private bool _useVerticalMovement = false;
+
         [Space]
 
         [SerializeField] private LayerMask _mapLayerMask;
         [SerializeField] private float _groundedLength;
         [SerializeField] private float _jumpCooldown;
+
+        [Space]
+
+        [SerializeField] private GameObject _shieldVisual;
 
         [Space]
 
@@ -59,6 +65,16 @@ namespace GFM2025
 
         private bool _forceBlock;
 
+        private bool _isInSpeedBoost;
+        private bool _isInSpeedMalus;
+        private bool _isInShield;
+        private bool _isInInvertInput;
+
+        private float _currentIsInSpeedBoost;
+        private float _currentIsInSpeedMalus;
+        private float _currentIsInShield;
+        private float _currentIsInInvertInput;
+
         private Tween _rotateTween;
 
         private Coroutine _delayRotatePlayer;
@@ -72,6 +88,8 @@ namespace GFM2025
         public Transform CameraLookAtTarget => _cameraLookAtTarget;
 
         public Transform EventPosition => _eventPosition;
+
+        public bool IsInShield => _isInShield;
 
         public event Action onPressPause;
 
@@ -134,6 +152,11 @@ namespace GFM2025
         {
             _moveVerticalValue = ctx.ReadValue<float>();
 
+            if (_isInInvertInput)
+            {
+                _moveVerticalValue *= -1;
+            }
+
             _moveVerticalValue = Mathf.Min(0f, _moveVerticalValue);
         }
 
@@ -141,6 +164,11 @@ namespace GFM2025
         {
             _rotateValue = ctx.ReadValue<float>();
             _moveHorizontalValue = ctx.ReadValue<float>();
+
+            if (_isInInvertInput)
+            {
+                _moveHorizontalValue *= -1;
+            }
         }
 
         private void UpdateJumpInput(InputAction.CallbackContext ctx)
@@ -170,6 +198,49 @@ namespace GFM2025
             onPressQTEFour?.Invoke();
         }
         #endregion
+
+        private void Update()
+        {
+            if (_isInShield)
+            {
+                _currentIsInShield -= Time.deltaTime;
+
+                if ( _currentIsInShield < 0)
+                {
+                    EndShieldBonus();
+                }
+            }
+
+            if (_isInSpeedBoost)
+            {
+                _currentIsInSpeedBoost -= Time.deltaTime;
+
+                if (_currentIsInSpeedBoost < 0)
+                {
+                    EndSpeedBoostBonus();
+                }
+            }
+
+            if (_isInSpeedMalus)
+            {
+                _currentIsInSpeedMalus -= Time.deltaTime;
+
+                if (_currentIsInSpeedMalus < 0)
+                {
+                    EndSpeedMalus();
+                }
+            }
+
+            if (_isInInvertInput)
+            {
+                _currentIsInInvertInput -= Time.deltaTime;
+
+                if (_currentIsInInvertInput < 0)
+                {
+                    EndInvertInput();
+                }
+            }
+        }
 
         private void FixedUpdate()
         {
@@ -225,7 +296,12 @@ namespace GFM2025
 
         private void UpdateMovement(float deltaTime)
         {
-            Vector3 dir = _rotationAnchor.forward * _moveVerticalValue;
+            Vector3 dir = Vector3.zero;
+
+            if (_useVerticalMovement)
+            {
+                dir = _rotationAnchor.forward * _moveVerticalValue;
+            }
 
             if (_useHorizontalMovement)
             {
@@ -234,7 +310,18 @@ namespace GFM2025
 
             dir.Normalize();
 
-            _rb.linearVelocity += dir * _data.MovementsAcceleration * deltaTime;
+            float multiplier = 1f;
+
+            if (_isInSpeedBoost)
+            {
+                multiplier = _data.SpeedBoostMultiplier;
+            }
+            else if (_isInSpeedMalus)
+            {
+                multiplier = _data.SpeedMalusMultiplier;
+            }
+
+            _rb.linearVelocity += dir * _data.MovementsAcceleration * multiplier * deltaTime;
 
             Vector3 externalForce = Vector3.zero;
 
@@ -248,7 +335,9 @@ namespace GFM2025
                 externalForce += MapBehaviour.Instance.Data.BaseForceOnPlayer * _rotationAnchor.forward;
             }
 
-            _rb.linearVelocity += externalForce * deltaTime;
+            Vector3 siphonExternalForce = GetSiphonExternalForce();
+
+            _rb.linearVelocity += siphonExternalForce + externalForce * deltaTime;
 
         }
 
@@ -341,11 +430,28 @@ namespace GFM2025
         }
         #endregion
 
-        #region Detect Siphon
+        #region Siphon
+        private Vector3 GetSiphonExternalForce()
+        {
+            Siphon siphon = GetClosestSiphon();
+
+            if (siphon == null)
+                return Vector3.zero;
+
+            Vector3 force = siphon.transform.position - transform.position;
+
+            force.y = 0f;
+
+            force *= _data.ExternalSiphonForceMultiplier / force.magnitude;
+
+            return force;
+        }
 
         private Siphon GetClosestSiphon()
         {
-            if (Physics.OverlapSphereNonAlloc(transform.position, 25f, _bufferSiphonCollider, _siphonLayerMask) <= 0)
+            _bufferSiphonCollider = Physics.OverlapSphere(transform.position, 25f, _siphonLayerMask);
+
+            if (_bufferSiphonCollider == null || _bufferSiphonCollider.Length <= 0)
                 return null;
 
             float minDist = 1000000f;
@@ -372,5 +478,63 @@ namespace GFM2025
 
         #endregion
 
+        #region Bonus
+        public void StartShieldBonus()
+        {
+            _isInShield = true;
+
+            _currentIsInShield = _data.ShieldDuration;
+
+            _shieldVisual.SetActive(true);
+        }
+
+        public void EndShieldBonus()
+        {
+            _isInShield = false;
+
+            _shieldVisual.SetActive(false);
+        }
+
+        public void StartSpeedBoostBonus()
+        {
+            _isInSpeedBoost = true;
+
+            _currentIsInSpeedBoost = _data.SpeedBoostDuration;
+
+            EndSpeedMalus();
+        }
+
+        public void EndSpeedBoostBonus()
+        {
+            _isInSpeedBoost = false;
+        }
+
+        public void StartSpeedMalus()
+        {
+            _isInSpeedMalus = true;
+
+            _currentIsInSpeedMalus = _data.SpeedMalusDuration;
+
+            EndSpeedBoostBonus();
+        }
+
+        public void EndSpeedMalus()
+        {
+            _isInSpeedMalus = false;
+        }
+
+        public void StartInvertInput()
+        {
+            _isInInvertInput = true;
+
+            _currentIsInInvertInput = _data.InvertInputDuration;
+        }
+
+        public void EndInvertInput()
+        {
+            _isInInvertInput = false;
+        }
+
+        #endregion
     }
 }
