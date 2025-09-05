@@ -208,8 +208,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3611752177562708210}
   m_Father: {fileID: 0}
@@ -329,3 +329,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 0
   _data: {fileID: 11400000, guid: a2ae63da539796c4d98bbc9aecb467ac, type: 2}
+  _ballImage: {fileID: 0}
