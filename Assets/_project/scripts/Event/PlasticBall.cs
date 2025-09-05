@@ -10,6 +10,8 @@ namespace GFM2025
 
         public UnityEvent onTicUnity;
 
+        public UnityEvent onJumpUnity;
+
         [SerializeField] private Image _ballImage;
 
         private void OnEnable() {

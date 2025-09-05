@@ -102,6 +102,8 @@ namespace GFM2025
 
         public UnityEvent onPlayerSlimeStart;
 
+        public UnityEvent onJumpUnity;
+
         #region Init / Destroy
         public void Init()
         {
@@ -361,6 +363,8 @@ namespace GFM2025
             _currentJumpCooldown = _jumpCooldown;
 
             _rb.AddForce(Vector3.up * _data.JumpForce, ForceMode.Impulse);
+
+            onJumpUnity?.Invoke();
         }
         #endregion
 
