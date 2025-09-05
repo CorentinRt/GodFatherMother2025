@@ -258,8 +258,30 @@
                 },
                 {
                     "name": "",
+                    "id": "e89a5f30-d755-4a90-908b-f4cfb3e2b9bb",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QTE_1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c19aaa1c-ea62-4b7d-91c8-55eb74829e45",
                     "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QTE_2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "197efc65-9739-4e2d-950c-dfcdd7685204",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -280,8 +302,30 @@
                 },
                 {
                     "name": "",
+                    "id": "fc80fd42-018b-4aeb-b5e4-0c8fda9f891b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QTE_3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7dc4caa8-34cc-4bc2-ac71-c1995e8f6ad4",
                     "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QTE_4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28b2ba53-93ec-4b41-a37f-19ecc627bed0",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
