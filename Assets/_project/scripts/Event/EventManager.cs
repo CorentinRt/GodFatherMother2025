@@ -26,24 +26,27 @@ public class EventManager : MonoBehaviour
         for (int i = 0; i < DataBaseManager.Instance.GetNumberEventData(); i++)
         {
             EventData item = DataBaseManager.Instance.GetEventData(i);
-            if (Random.Range(0, 100) < item.pourcentage + item.scalePourcentage * item.pourcentage * GameManager.Instance.TourCount)
+            if (item.nombreTourAvantApparition >= GameManager.Instance.TourCount)
             {
-                for (int j = 0; j < item.number; j++)
+                if (Random.Range(0, 100) < item.pourcentage + item.scalePourcentage * item.pourcentage * GameManager.Instance.TourCount)
                 {
-                    Vector3 minSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) - new Vector3(10f, 0f, 10f);
-                    Vector3 maxSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) + new Vector3(10f, 0f, 15f);
-
-                    Vector3 randomPos = new Vector3(Random.Range(minSpawnPos.x, maxSpawnPos.x), MapBehaviour.Instance.GetWaterTransform().position.y + _heightOffset, Random.Range(minSpawnPos.z, maxSpawnPos.z));
-
-                    Debug.DrawLine(minSpawnPos, maxSpawnPos, Color.red, 5f);
-                    
-                    if (!MapBehaviour.Instance.PositionIsInEventZone(randomPos))
+                    for (int j = 0; j < item.number; j++)
                     {
-                        continue;
-                    }
+                        Vector3 minSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) - new Vector3(10f, 0f, 10f);
+                        Vector3 maxSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) + new Vector3(10f, 0f, 15f);
 
-                    GameObject a = Instantiate(item.EventPrefab, randomPos, Quaternion.identity, MapBehaviour.Instance.GetWaterTransform());
-                    a.GetComponent<EventParent>().lifeTime = item.lifeTime;
+                        Vector3 randomPos = new Vector3(Random.Range(minSpawnPos.x, maxSpawnPos.x), MapBehaviour.Instance.GetWaterTransform().position.y + _heightOffset, Random.Range(minSpawnPos.z, maxSpawnPos.z));
+
+                        Debug.DrawLine(minSpawnPos, maxSpawnPos, Color.red, 5f);
+
+                        if (!MapBehaviour.Instance.PositionIsInEventZone(randomPos))
+                        {
+                            continue;
+                        }
+
+                        GameObject a = Instantiate(item.EventPrefab, randomPos, Quaternion.identity, MapBehaviour.Instance.GetWaterTransform());
+                        a.GetComponent<EventParent>().lifeTime = item.lifeTime;
+                    }
                 }
             }
         }
