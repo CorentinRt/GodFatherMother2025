@@ -9,9 +9,7 @@ namespace GFM2025
         {
             PLAYER_SPEED_INCREASE = 0,
             SHIELD = 1,
-            MUSIC_EPIC = 2,
-            PLAYER_SPEED_DECREASE = 3,
-            MUSIC_TRASH = 4
+            PLAYER_SPEED_DECREASE = 2,
         }
 
         [SerializeField] private Transform _visuals;
@@ -35,7 +33,7 @@ namespace GFM2025
 
         private void SetRandomMysteryBonus()
         {
-            _bonus = (MYSTERY_BONUS)Random.Range(0, 4);
+            _bonus = (MYSTERY_BONUS)Random.Range(0, 2);
         }
 
         private void PlayRotateInfinite()
@@ -68,16 +66,9 @@ namespace GFM2025
                 case MYSTERY_BONUS.SHIELD:
                     player.StartShieldBonus();
                     break;
-                case MYSTERY_BONUS.MUSIC_EPIC:
-
-                    break;
 
                 case MYSTERY_BONUS.PLAYER_SPEED_DECREASE:
                     player.StartSpeedMalus();
-                    break;
-
-                case MYSTERY_BONUS.MUSIC_TRASH:
-
                     break;
 
                 default:
