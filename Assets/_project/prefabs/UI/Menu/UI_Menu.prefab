@@ -157,7 +157,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1518223772422535975}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 404797958740478776}
+        m_TargetAssemblyTypeName: GFM2025.Ui_Menu, PROJECT_GFM2025
+        m_MethodName: LunchGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1859538329083713123
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fae2a32d4eb6b41b3128181cf9bc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelData: {fileID: 11400000, guid: 88974a5e18d7f564bb773d593e25aeaf, type: 2}
 --- !u!1 &8520803202959778301
 GameObject:
   m_ObjectHideFlags: 0

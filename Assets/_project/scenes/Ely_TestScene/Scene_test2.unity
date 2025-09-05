@@ -1064,7 +1064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2169018213702553452, guid: 2770d66bc8fa99143a8b5d5a9d62dfa5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4394357850347618434, guid: 2770d66bc8fa99143a8b5d5a9d62dfa5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1078,13 +1078,17 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8226377885988663180, guid: 2770d66bc8fa99143a8b5d5a9d62dfa5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8417070471918671609, guid: 2770d66bc8fa99143a8b5d5a9d62dfa5, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8644636371841649922, guid: 2770d66bc8fa99143a8b5d5a9d62dfa5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9073033138569298650, guid: 2770d66bc8fa99143a8b5d5a9d62dfa5, type: 3}
       propertyPath: m_text
