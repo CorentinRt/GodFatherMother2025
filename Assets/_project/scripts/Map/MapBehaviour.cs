@@ -73,10 +73,10 @@ namespace GFM2025
 
         public bool PositionIsInEventZone(Vector3 position)
         {
-            if (position.z > _eventZoneEnd.position.x)
+            if (position.z > _eventZoneEnd.position.z)
                 return false;
 
-            if (position.z < _eventZoneStart.position.x)
+            if (position.z < _eventZoneStart.position.z)
                 return false;
 
             return true;

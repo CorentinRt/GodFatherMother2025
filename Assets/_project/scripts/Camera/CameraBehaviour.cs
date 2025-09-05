@@ -61,8 +61,6 @@ namespace GFM2025
 
                 yield return null;
             }
-
-            yield return null;
         }
 
         [Button]

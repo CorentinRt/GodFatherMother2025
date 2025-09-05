@@ -1,6 +1,9 @@
 using System;
 
-[Serializable]
-public class MystereData
+namespace GFM2025
 {
+    [Serializable]
+    public class MystereData
+    {
+    }
 }

@@ -1,4 +1,5 @@
 using CREMOT.GameplayUtilities;
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Security.Cryptography;
@@ -27,13 +28,18 @@ namespace GFM2025
 
         private Coroutine _currentGameStateCoroutine;
 
+        private int _tourCount = 0;
 
         public GAME_STATE CurrentGameState => _currentGameState;
 
+        public int TourCount => _tourCount;
 
         public event Action<GAME_STATE> onGameStateChanged;
         public UnityEvent onGameStateChangedUnity;
 
+        public event Action<int> onChangeTour;
+
+        public UnityEvent onStartGameUnity;
 
 
         private void Start()
@@ -101,6 +107,17 @@ namespace GFM2025
 
                 case GAME_STATE.SCORING:
                     _currentGameState = GAME_STATE.SCORING;
+
+                    if (_tourCount != 0)
+                    {
+                        ScoreManager.Instance.ScoreReturnHomePoints();
+                    }
+                    else
+                    {
+                        onStartGameUnity?.Invoke();
+                    }
+
+                    IncrementTourCount();
                     break;
 
                 case GAME_STATE.RETURN_HOME:
@@ -227,6 +244,18 @@ namespace GFM2025
         public void QuitGame()
         {
             Application.Quit();
+        }
+
+        #endregion
+
+        #region Tour
+
+        [Button]
+        public void IncrementTourCount()
+        {
+            ++_tourCount;
+
+            onChangeTour?.Invoke(_tourCount);
         }
 
         #endregion

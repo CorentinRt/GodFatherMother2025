@@ -124,6 +124,7 @@ namespace GFM2025
                     Debug.LogError($"UI_QTE: Aucun input trouvé dans la qteData");
                     return false;
                 }
+                PlayerBehaviour.Instance.StartForceBlockPlayer();
                 UpdateTextStartQTE();
                 OpenUi();
                 return true;
@@ -135,6 +136,7 @@ namespace GFM2025
         {
             CloseUi();
             Destroy(_itemMousse);
+            PlayerBehaviour.Instance.StopForceBlockPlayer();
         }
         public void OpenUi()
         {

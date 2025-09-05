@@ -44,6 +44,17 @@ namespace GFM2025
             onScorePointsUnity?.Invoke();
         }
 
+        public void ScoreReturnHomePoints()
+        {
+            if (GameManager.Exist && GameManager.Instance.CurrentGameState != GAME_STATE.SCORING)
+                return;
+
+            _currentScore += _data.ReturnHomeScoreAmount;
+
+            onScorePoints?.Invoke(_currentScore);
+            onScorePointsUnity?.Invoke();
+        }
+
         public void PlayerEnterScoreZone()
         {
             _playerInside = true;
@@ -84,8 +95,6 @@ namespace GFM2025
 
                 yield return new WaitForSeconds(_data.DelayBetweenEachScore);
             }
-
-            yield return null;
         }
 
     }
