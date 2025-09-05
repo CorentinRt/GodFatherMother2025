@@ -26,7 +26,7 @@ public class EventManager : MonoBehaviour
         for (int i = 0; i < DataBaseManager.Instance.GetNumberEventData(); i++)
         {
             EventData item = DataBaseManager.Instance.GetEventData(i);
-            if (item.nombreTourAvantApparition >= GameManager.Instance.TourCount)
+            if (item.nombreTourAvantApparition <= GameManager.Instance.TourCount)
             {
                 if (Random.Range(0, 100) < item.pourcentage + item.scalePourcentage * item.pourcentage * GameManager.Instance.TourCount)
                 {
