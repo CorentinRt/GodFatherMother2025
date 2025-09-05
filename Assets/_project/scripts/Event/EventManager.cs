@@ -30,7 +30,8 @@ public class EventManager : MonoBehaviour
             {
                 if (Random.Range(0, 100) < item.pourcentage + item.scalePourcentage * item.pourcentage * GameManager.Instance.TourCount)
                 {
-                    for (int j = 0; j < item.number; j++)
+                    int number = Random.Range(item.numberMin, item.numberMax);
+                    for (int j = 0; j < number; j++)
                     {
                         Vector3 minSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) - new Vector3(10f, 0f, 10f);
                         Vector3 maxSpawnPos = new Vector3(0f, PlayerBehaviour.Instance.EventPosition.position.y, PlayerBehaviour.Instance.EventPosition.position.z) + new Vector3(10f, 0f, 15f);
