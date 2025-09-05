@@ -39,6 +39,7 @@ namespace GFM2025
 
         public event Action<int> onChangeTour;
 
+        public UnityEvent onStartGameUnity;
 
 
         private void Start()
@@ -110,6 +111,10 @@ namespace GFM2025
                     if (_tourCount != 0)
                     {
                         ScoreManager.Instance.ScoreReturnHomePoints();
+                    }
+                    else
+                    {
+                        onStartGameUnity?.Invoke();
                     }
 
                     IncrementTourCount();
