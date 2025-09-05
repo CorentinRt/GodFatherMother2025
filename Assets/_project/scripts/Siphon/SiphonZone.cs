@@ -4,7 +4,7 @@ namespace GFM2025
 {
     public class SiphonZone : MonoBehaviour
     {
-        private void OnEnterPlayer()
+        private void OnStayPlayer()
         {
             if (GameManager.Exist)
             {
@@ -17,15 +17,21 @@ namespace GFM2025
         }
 
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
+            if (!GameManager.Exist)
+                return;
+
+            if (GameManager.Instance.CurrentGameState != GAME_STATE.WATER_DECREASE)
+                return;
+
             if (other.gameObject == null)
                 return;
 
             if (!other.gameObject.TryGetComponent<IPlayerBehaviour>(out IPlayerBehaviour player))
                 return;
 
-            OnEnterPlayer();
+            OnStayPlayer();
         }
     }
 }

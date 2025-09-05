@@ -464,6 +464,7 @@ MonoBehaviour:
   _rb: {fileID: 638358341218651784}
   _useHorizontalMovement: 1
   _rotationAnchor: {fileID: 2344512215347617514}
+  _useVerticalMovement: 0
   _mapLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -476,6 +477,9 @@ MonoBehaviour:
   _siphonLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  onPlayerBounceBackUnity:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &787197517433321484
 PrefabInstance:
   m_ObjectHideFlags: 0
