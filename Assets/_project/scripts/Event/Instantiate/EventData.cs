@@ -9,6 +9,7 @@ public class EventData
     public float pourcentage;
     public float scalePourcentage;
     public int nombreTourAvantApparition;
-    public int number;
+    public int numberMin;
+    public int numberMax;
     public float lifeTime;
 }
