@@ -17,7 +17,7 @@ MonoBehaviour:
   events:
   - label: PlasticBall
     EventPrefab: {fileID: 7120910818878265562, guid: ae4c9f6e371d68a49831e3574892c5fe, type: 3}
-    pourcentage: 100
+    pourcentage: 90
     scalePourcentage: -0.1
     nombreTourAvantApparition: 1
     numberMin: 4
@@ -25,7 +25,7 @@ MonoBehaviour:
     lifeTime: 15
   - label: DogToy
     EventPrefab: {fileID: 720285049858528518, guid: 8ee21a6222d0eb644827425d490a511a, type: 3}
-    pourcentage: 40
+    pourcentage: 45
     scalePourcentage: 0.1
     nombreTourAvantApparition: 2
     numberMin: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
     nombreTourAvantApparition: 3
     numberMin: 1
     numberMax: 3
-    lifeTime: 15
+    lifeTime: 10
   - label: montagne de mousse
     EventPrefab: {fileID: 3964659222429195938, guid: bec881b11bbd8874083ed3864c2daf8e, type: 3}
     pourcentage: 20
