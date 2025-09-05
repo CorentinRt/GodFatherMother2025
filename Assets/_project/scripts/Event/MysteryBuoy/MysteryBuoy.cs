@@ -8,8 +8,7 @@ namespace GFM2025
         public enum MYSTERY_BONUS
         {
             PLAYER_SPEED_INCREASE = 0,
-            SHIELD = 1,
-            PLAYER_SPEED_DECREASE = 2,
+            PLAYER_SPEED_DECREASE = 1,
         }
 
         [SerializeField] private Transform _visuals;
@@ -33,7 +32,7 @@ namespace GFM2025
 
         private void SetRandomMysteryBonus()
         {
-            _bonus = (MYSTERY_BONUS)Random.Range(0, 2);
+            _bonus = (MYSTERY_BONUS)Random.Range(0, 1);
         }
 
         private void PlayRotateInfinite()
@@ -61,10 +60,6 @@ namespace GFM2025
             {
                 case MYSTERY_BONUS.PLAYER_SPEED_INCREASE:
                     player.StartSpeedBoostBonus();
-                    break;
-
-                case MYSTERY_BONUS.SHIELD:
-                    player.StartShieldBonus();
                     break;
 
                 case MYSTERY_BONUS.PLAYER_SPEED_DECREASE:
