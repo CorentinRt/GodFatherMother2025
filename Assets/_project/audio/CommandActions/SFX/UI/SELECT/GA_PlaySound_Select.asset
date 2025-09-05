@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 591a83f9c1ccecc44add26385063e70b, type: 3}
-  m_Name: GA_PlaySound_Bounce
+  m_Name: GA_PlaySound_Select
   m_EditorClassIdentifier: 
   _soundToPlay:
   - {fileID: 8300000, guid: 1839263d59efb374ca6ae1b0d0da7ee0, type: 3}
