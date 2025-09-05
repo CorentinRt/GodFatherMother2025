@@ -100,6 +100,8 @@ namespace GFM2025
 
         public UnityEvent onPlayerBounceBackUnity;
 
+        public UnityEvent onPlayerSlimeStart;
+
         #region Init / Destroy
         public void Init()
         {
@@ -532,6 +534,8 @@ namespace GFM2025
             _isInInvertInput = true;
 
             _currentIsInInvertInput = _data.InvertInputDuration;
+
+            onPlayerSlimeStart?.Invoke();
         }
 
         public void EndInvertInput()

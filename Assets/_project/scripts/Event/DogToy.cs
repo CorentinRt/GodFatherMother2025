@@ -1,9 +1,14 @@
+using DG.Tweening.Core.Easing;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GFM2025
 {
     public class DogToy : EventParent {
         private Rigidbody _rgbd;
+
+        public UnityEvent onBounce;
+
         [SerializeField] private LayerMask _mask;
 
         [SerializeField] private DogToyDataBase _data;
@@ -24,6 +29,7 @@ namespace GFM2025
         {
             if ((( 1 << collision.gameObject.layer) & _mask)  != 0)
             {
+                onBounce?.Invoke();
                 NumberBounce++;
                 _rgbd.AddForce(Vector3.Reflect(collision.transform.position - transform.position, collision.contacts[0].normal) * _data.bounce * NumberBounce* _data.scaleSpeed, ForceMode.Impulse);
             }

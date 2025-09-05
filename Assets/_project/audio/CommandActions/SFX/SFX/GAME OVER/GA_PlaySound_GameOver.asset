@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 591a83f9c1ccecc44add26385063e70b, type: 3}
-  m_Name: GA_PlaySound_Bounce 2
+  m_Name: GA_PlaySound_GameOver
   m_EditorClassIdentifier: 
   _soundToPlay:
-  - {fileID: 8300000, guid: 913847acfaf9c1240afeb8a235e0fc94, type: 3}
+  - {fileID: 8300000, guid: 62889c628a475e04aabe0c3e3ccf2681, type: 3}
+  - {fileID: 8300000, guid: 031048287809db74c86857255a973c94, type: 3}
   _delay: 0
