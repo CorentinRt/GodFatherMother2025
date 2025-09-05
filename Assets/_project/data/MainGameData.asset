@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d466029230b601b44b2746114c2ac6e9, type: 3}
   m_Name: MainGameData
   m_EditorClassIdentifier: 
-  _preGameCooldown: 3
+  _preGameCooldown: 5
   _scoringPhaseMinDuration: 5
   _scoringPhaseMaxDuration: 10
