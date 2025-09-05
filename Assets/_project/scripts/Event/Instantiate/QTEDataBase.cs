@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "QTEDataBase", menuName = "data/QTEData", order = 1)]

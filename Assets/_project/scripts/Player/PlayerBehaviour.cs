@@ -98,6 +98,8 @@ namespace GFM2025
         public event Action onPressQTEThree;
         public event Action onPressQTEFour;
 
+        public UnityEvent onPlayerBounceBackUnity;
+
         #region Init / Destroy
         public void Init()
         {
@@ -413,6 +415,8 @@ namespace GFM2025
         public void BouncePlayerBack()
         {
             _rb.AddForce(_rotationAnchor.forward * -1 * _data.BounceForce, ForceMode.Impulse);
+
+            onPlayerBounceBackUnity?.Invoke();
         }
         #endregion
 

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MapData
   m_EditorClassIdentifier: 
   _timeToEmpty: 120
-  _siphonForceOnPlayer: 20
-  _baseForceOnPlayer: 10
+  _siphonForceOnPlayer: 12.5
+  _baseForceOnPlayer: 7.5
