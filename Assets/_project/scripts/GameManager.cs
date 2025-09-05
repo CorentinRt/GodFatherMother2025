@@ -41,6 +41,7 @@ namespace GFM2025
 
         public UnityEvent onStartGameUnity;
 
+        public UnityEvent onEndGameUnity;
 
         private void Start()
         {
