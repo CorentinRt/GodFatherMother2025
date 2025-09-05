@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GFM2025
 {
@@ -12,6 +13,9 @@ namespace GFM2025
         }
 
         [SerializeField] private Transform _visuals;
+
+
+        public UnityEvent onDestroyByGet;
 
         private MYSTERY_BONUS _bonus;
 
@@ -69,6 +73,8 @@ namespace GFM2025
                 default:
                     break;
             }
+
+            onDestroyByGet?.Invoke();
 
             RequestDestroy();
         }

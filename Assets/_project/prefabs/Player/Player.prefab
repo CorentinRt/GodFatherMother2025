@@ -476,6 +476,60 @@ MonoBehaviour:
   _siphonLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  onPlayerBounceBackUnity:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fc88669c5e36cf7409b8a366474f867d, type: 2}
+        m_TargetAssemblyTypeName: GFM2025.GA_PlaySound, PROJECT_GFM2025
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 7d603a8ac2de46042af8506a2bb57d17, type: 2}
+        m_TargetAssemblyTypeName: GFM2025.GA_PlaySound, PROJECT_GFM2025
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerSlimeStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b5fb32b0b0e5f354db203e23f4aaf818, type: 2}
+        m_TargetAssemblyTypeName: GFM2025.GA_PlaySound, PROJECT_GFM2025
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 68904e0396488f74c8ac16422af80dd7, type: 2}
+        m_TargetAssemblyTypeName: GFM2025.GA_PlaySound, PROJECT_GFM2025
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &865133037928471069
 PrefabInstance:
   m_ObjectHideFlags: 0
