@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GFM2025
 {
     public class EventParent : MonoBehaviour
     {
+        public UnityEvent onSpawn;
+
         [HideInInspector] public float lifeTime;
         private float _time = 0;
         protected bool _timePass;
@@ -11,6 +14,8 @@ namespace GFM2025
         private void Start()
         {
             _timePass = false;
+
+            onSpawn?.Invoke();
         }
 
         void Update()
