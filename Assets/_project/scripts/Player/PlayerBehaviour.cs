@@ -30,6 +30,8 @@ namespace GFM2025
         [SerializeField] private bool _useHorizontalMovement = true;
         [SerializeField] private Transform _rotationAnchor;
 
+        [SerializeField] private bool _useVerticalMovement = false;
+
         [Space]
 
         [SerializeField] private LayerMask _mapLayerMask;
@@ -228,6 +230,16 @@ namespace GFM2025
                     EndSpeedMalus();
                 }
             }
+
+            if (_isInInvertInput)
+            {
+                _currentIsInInvertInput -= Time.deltaTime;
+
+                if (_currentIsInInvertInput < 0)
+                {
+                    EndInvertInput();
+                }
+            }
         }
 
         private void FixedUpdate()
@@ -284,7 +296,12 @@ namespace GFM2025
 
         private void UpdateMovement(float deltaTime)
         {
-            Vector3 dir = _rotationAnchor.forward * _moveVerticalValue;
+            Vector3 dir = Vector3.zero;
+
+            if (_useVerticalMovement)
+            {
+                dir = _rotationAnchor.forward * _moveVerticalValue;
+            }
 
             if (_useHorizontalMovement)
             {

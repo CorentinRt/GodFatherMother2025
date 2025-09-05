@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GFM2025
 {
@@ -6,12 +7,16 @@ namespace GFM2025
         private Rigidbody _rgbd;
         [SerializeField] private PlasticBallDataBase _data;
 
+        [SerializeField] private Image _ballImage;
+
         private void OnEnable() {
             TryGetComponent(out _rgbd);
         }
 
         private void Start() {
             _rgbd.linearVelocity = new Vector3(Random.Range(-10f, 10f), 0, Random.Range(-10f, 10f)).normalized;
+
+            _ballImage.sprite = _data.GetRandomBallSprite();
         }
 
         private void OnCollisionEnter(Collision collision)

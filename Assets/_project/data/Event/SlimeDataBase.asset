@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SlimeDataBase
   m_EditorClassIdentifier: 
   lifeTime: 9
-  timeFadeIn: 3
+  timeFadeIn: 0.1
