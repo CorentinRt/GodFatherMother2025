@@ -24,15 +24,19 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: a6ca376f63afbd54a96bcaec80a34bfc, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHAPREMULTIPLY_ON
+  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
+  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -52,21 +56,35 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 1
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _CastShadows: 1
+    - _Cull: 2
     - _D_Max: 2
     - _D_Min: 0
     - _D_X_Pan: 0.25
     - _D_Y_Pan: 0.15
     - _Distortion_Intensity: 0.94
+    - _DstBlend: 10
     - _N_X_Pan: 0.05
     - _N_Y_Pan: 0.025
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _SrcBlend: 1
     - _Step: 0.82
+    - _Surface: 1
     - _V_Angle_Speed: 0.5
     - _V_Max: 0.62
     - _V_Min: 0.04
     - _V_X_Pan: 0
     - _V_Y_Pan: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
     m_Colors:
     - _D_Scale: {r: 0.025, g: 0.025, b: 0, a: 0}
     - _N_Scale: {r: 0.075, g: 0.075, b: 0, a: 0}
