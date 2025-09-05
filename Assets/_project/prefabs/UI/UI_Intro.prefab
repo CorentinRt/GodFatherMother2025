@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animations:
-  - _animationType: 3
+  - _animationType: 2
     _duration: 1.3
     _ease: 6
     _targetMove: {fileID: 4309673724863784456}
@@ -61,7 +61,7 @@ MonoBehaviour:
     _idleRandomOffsetDuration: 0
     _bobbingScale: {x: 0, y: 0, z: 0}
     _playOnStart: 0
-    _canPlayOnPause: 1
+    _canPlayOnPause: 0
     OnAnimationStarted:
       m_PersistentCalls:
         m_Calls: []
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animations:
-  - _animationType: 3
+  - _animationType: 2
     _duration: 0.7
     _ease: 6
     _targetMove: {fileID: 1493777740004159922}
@@ -91,7 +91,7 @@ MonoBehaviour:
     _idleRandomOffsetDuration: 0
     _bobbingScale: {x: 0, y: 0, z: 0}
     _playOnStart: 0
-    _canPlayOnPause: 1
+    _canPlayOnPause: 0
     OnAnimationStarted:
       m_PersistentCalls:
         m_Calls: []
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animations:
-  - _animationType: 3
+  - _animationType: 2
     _duration: 0.7
     _ease: 6
     _targetMove: {fileID: 4309673724863784456}
@@ -478,7 +478,7 @@ MonoBehaviour:
     _idleRandomOffsetDuration: 0
     _bobbingScale: {x: 0, y: 0, z: 0}
     _playOnStart: 0
-    _canPlayOnPause: 1
+    _canPlayOnPause: 0
     OnAnimationStarted:
       m_PersistentCalls:
         m_Calls: []
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animations:
-  - _animationType: 3
+  - _animationType: 2
     _duration: 0.7
     _ease: 6
     _targetMove: {fileID: 296534578749541647}
@@ -508,7 +508,7 @@ MonoBehaviour:
     _idleRandomOffsetDuration: 0
     _bobbingScale: {x: 0, y: 0, z: 0}
     _playOnStart: 0
-    _canPlayOnPause: 1
+    _canPlayOnPause: 0
     OnAnimationStarted:
       m_PersistentCalls:
         m_Calls: []
